@@ -1,0 +1,35 @@
+<?php
+
+class Vehiculo_dto{
+
+    private $placavehiculo;
+    private $idclientev;
+
+    public function __construct($placavehiculo,$idclientev){
+	$this->placavehiculo = $placavehiculo;
+	$this->idclientev= $idclientev;
+	}
+        /* MÉTODOS DE ACCESO: SETTER Y GETTERS*/
+        
+        // Código Rol
+    public function setPlaca($placavehiculo){
+        $this->placavehiculo = $placavehiculo;
+    }
+    public function getPlaca(){
+        return $this->placavehiculo;
+    }
+
+        // Nombre Rol
+    public function setCliente($idclientev){
+        $this->idclientev= $idclientev;
+    }
+    public function getCliente(){
+        return $this->idclientev;
+    }
+}
+
+
+
+
+
+?>

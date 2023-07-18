@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../img/imagen-fondo.jpg);
+    background-position: center center;
+    background-repeat:no-repeat ;
+    background-size:cover ;
+    font-family: sans-serif;
+    height: 100vh;
+    }
+
+    .contenedor {
+        width: 320px;
+        height: 440px;
+        background: #000;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 80px 30px;
+        text-align: center;
+        border-radius: 0.40rem!important;
+    } 
+
+    .contenedor  .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    } 
+
+    .contenedor  h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+        font-family:unset;
+    }
+
+    .contenedor label{
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        display: block;
+    }
+
+    .contenedor input{
+        width: 100%;
+        margin-bottom: 20px;
+        }
+
+        .contenedor input[type="text"],
+        .contenedor input[type="password"] {
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none; 
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .contenedor input[type="submit"] { 
+            border: none;
+            outline: nome;
+            height: 40px;
+            background: #2d93c4;
+            color: #fff;
+            font-size:18px;
+            border-radius: 20px;
+            transition: 0.5s;
+        } 
+
+        .contenedor input:hover[type="submit"]{
+            background: #fff;
+            color: #2d93c4;
+        }
+
+        .links {
+            font-size: 12px ;
+            line-height: 20px;
+            color:darkgrey;
+            text-decoration: none;
+            
+        }
+        .container__chek{
+            display: flex;
+            justify-content: center;
+        }
+        .form_chekbox{
+            width: 10%;
+        }
+        
+
+        

@@ -1,0 +1,338 @@
+ /* Clases especiales */
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html{
+	scroll-behavior: smooth;
+}
+body{
+	background: #ddd;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+/* Borde */
+.borde{
+	border: 1px solid #ccc;	
+}
+/* Centrar */
+.centrar{
+	text-align: center!important;
+}
+/* Tope: Navegación */
+.tope{	
+	position: relative;
+	top: -49px;	
+}
+/* Colores básicos */
+.color-negro{
+	background: #000;
+}
+.color-gris-oscuro{
+	background: #777;
+}
+.color-gris-claro{
+	background: #aaa;
+}
+.color-blanco{
+	background: #fff;
+}
+.color-lubri{
+	background: #2D93C4;
+}
+
+ /* Contenedor */
+
+.contenedor{
+	max-width: 1280px;
+	width: 95%;
+	margin: auto;
+} /* Navegador, Encabezado, 
+Secciones y Pie de Página*/
+nav, header, section, footer{
+	display: flex;
+	flex-flow: column nowrap;
+	background: #FFF;
+	height: 100%;
+}
+
+/* Navegador */
+nav{	
+	flex-flow: row wrap;	
+	height: 50px;
+	position:sticky;
+	top: 0;
+	z-index: 100;
+	font-size: 1.3em;
+}
+.logo{
+	flex: 20%;
+	height: 100%;
+	background: #2D93C4;
+	display: flex;
+	align-items: flex-end;
+}
+.logo img{
+	width: 25%;
+	
+}
+.menu{
+	flex: 65%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;	
+	height: 100%;
+	background: #2D93C4;
+}
+.menu .m-inicio,
+.menu .m-productos,
+.menu .m-nosotros,
+.menu .m-contactenos{
+	flex: 0 0 15%;
+	display: flex;
+}
+.menu a,
+.ingreso a{
+	flex: 1;
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+.menu a:hover{
+	background: rgba(0, 0, 0, 0.5);
+	color: #EEE;
+}
+.ingreso a:hover{
+	background: rgba(255, 255, 255, 0.8);
+	color: #333;
+}
+.menu a{
+	color: #343A40;
+}
+.ingreso{
+	flex: 15%;
+	display: flex;	
+	height: 100%;	
+	background: #000;
+}
+.ingreso .m-ingreso{
+	flex: 1;
+	display: flex;	
+}
+.ingreso a{	
+	color: #DDD;	
+}
+
+/* Encabezado o Header */
+
+header, section{	
+	min-height: 83.5vh;	
+}
+
+header{
+	display: flex;
+	flex-flow: column nowrap;
+	background: #FFF;
+	height: 100%;
+}
+/* Seccion Productos */
+
+.nos-fila-arr,
+.nos-fila-cnt,
+.nos-fila-abj{
+	flex: 1;
+	display: flex;
+	flex-flow: row wrap;	
+}
+.nos-col-izq,
+.nos-col-cnt,
+.nos-col-der{
+	padding: 10px;
+	display: flex;
+	flex-flow: column wrap;
+}
+.nos-col-izq,
+.nos-col-der{
+	flex: 2;
+}
+.nos-col-cnt{
+	flex: 1;	
+}
+
+/* Titulo */
+.titulo{
+	min-height: 70px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	background: #2D93C4;
+	color: #FFF;
+	margin: 0%;	
+	border: 1px solid #164962;
+}
+/* Subtítulos */
+.subtitulo{
+	flex: 0 0 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	font-family: 'Roboto', sans-serif;	
+	border-radius: 4px 4px 0 0;
+	background: #164962;
+	color: #FFF;
+}
+/* Párrafos */
+.parrafo{
+	flex: 1;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	text-align: center;	
+	padding: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 0.9em;
+}
+
+/* IMÁGENES*/
+
+.imagen{
+	flex: 1;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+.imagen img{	
+	max-width: 350px;	
+	min-width: 5px;	
+}
+
+/* Secciòn Nosotros */
+
+.portafolio{
+	flex-flow: row wrap!important;
+	min-height: 100px!important;
+}
+.portafolio .izq{
+	flex: 1;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.portafolio .izq img{
+	/* flex: 1; */
+	/* width: 100px!important; */
+}
+.portafolio .der{
+	flex: 1;
+	padding: 10px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+.portafolio .der p{
+	flex: 1;
+	margin: 0;
+	padding-bottom: 0;
+}
+.portafolio a{
+	flex: 0 0 100%;		
+}
+.portafolio .parrafo{
+			
+	text-align: center;
+}
+
+/* Contactenos */
+
+.contactenos{
+	flex-flow: column wrap;
+}
+.cont-col-izq,
+.cont-col-der{
+	flex: 1;	
+}
+.cont-col-izq{
+	display: flex;
+	flex-flow: column wrap;
+	padding: 10px;	
+}
+.cont-col-der{
+	display: flex;
+	flex-flow: column wrap;
+}
+/* ------------------------------------------------------------------------------------- */
+/* ICONOGRAFÍA ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+.social-media{
+	flex: 1;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 10px;
+	/* border-top: 1px solid #ccc; */
+}
+.social-media div{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3.5em;
+}
+.social-media div a{
+	text-decoration: none;
+	color: #000;
+}
+.social-media div a:hover{	
+	color: #FFF;
+}
+/* ------------------------------------------------------------------------------------- */
+/* ICONOGRAFÍA ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+.social-media{
+	flex: 1;
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 10px;
+	border-top: 1px solid #ccc;
+	justify-content: center;
+}
+.social-media div{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3.5em;
+}
+.social-media div a{
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+	color: #000;
+}
+.social-media div a:hover{	
+	color: #2D93C4;
+}
+/* ------------------------------------------------------------------------------------- */
+/* PIE DE PÁGINA ----------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+footer{
+	min-height: 70px;
+	background: #000;	
+	padding: 10px;
+	font-size: 0.8em;	
+}
+footer .parrafo{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #DDD;
+}
