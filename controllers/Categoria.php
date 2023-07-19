@@ -5,54 +5,45 @@
     class Categoria{
         private $categoriaDao;
         public function __construct(){
-            $this->categoriaDao= new Categoria_dao;
+            $this->categoriaDao = new Categoria_dao;
         }
         public function index(){
-            $categoria = $this->categoriaDao->ReadCategoriaDao();
+
+            $verCategoria = $this->categoriaDao->verCategoriaDao();
+            $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_categoria'])) {
                 $result =$this->categoriaDao->consultarCategoriaDao($_GET['id_categoria']); 
                 $categoria_dto=new Categoria_dto($result[0],$result[1]);   
                 $categoria_dto->setIdCategoria($result[0])   ;        
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                // Capturar Datos
-                $categoria_dto=new Categoria_dto($_POST['id_categoria'],$_POST['nombre_categoria']);
-                
-                $this->categoriaDao->createCategoria($categoria_dto);               
-                header("Location: ?c=Categoria");
+                if (!empty($_POST['id_categoria'])&&!empty($_POST['nombre_categoria'])){
+                    $categoria_dto=new Categoria_dto($_POST['id_categoria'],$_POST['nombre_categoria']);
+                    $this->categoriaDao->createCategoria($categoria_dto);               
+                    header("Location: ?c=Categoria");
+                }
+                else{
+                    $alerta ='Existen campos vacios';
+                }
             }
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/2_products/2_1categoria/categoria.view.php";
             require_once "views/roles/admin/footer.php";
         }
-        public function eliminar_categoria(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-                // Capturar Datos
-                $this->categoriaDao->eliminarCatergoriaDao($_GET['id_categoria']); 
-            }
-            $categoria = $this->categoriaDao->readCategoriaDao();
-            require_once "views/roles/admin/header_dash.php";
-            require_once "views/modules/2_products/2_1categoria/categoria.view.php";
-            require_once "views/roles/admin/footer.php";
-        } 
-        public function editar_categoria(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $editcate=$this->categoriaDao->actualizarCategoriaDao($_GET['id_categoria']);
-                
-
-            }
+        public function editar_categoria(){    
+            $categoria = $this->categoriaDao->actualizarCategoriaDao($_GET['id_categoria'])[0];
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/2_products/2_1categoria/categoria.editar.php";
             require_once "views/roles/admin/footer.php";
         }
-         public function modificar_categoria(){
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-               
-
-                $this->categoriaDao->modificarCategoriaDao($_POST['id_categoria'],$_POST['nombre_categoria']);               
-                header("Location: ?c=Categoria");
-            }
-            
+        public function modificar_categoria(){
+           $categoria_dto = new Categoria_dto ($_POST['id_categoria'],$_POST['nombre_categoria'])
+           $this->categoriaDao->modificarCategoriaDao($categoria_dto);               
+           header("Location: ?c=Categoria");   
         }
+        public function eliminar_categoria(){
+            $this->categoriaDao->eliminarCatergoriaDao($_GET['id_categoria']); 
+            header("Location: ?c=Categoria");
+        } 
     }
 ?>
