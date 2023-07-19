@@ -12,10 +12,20 @@
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
                 <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Producto"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="bi bi-archive-fill "></i>Crear roducto</a></td>
-                    
-                    
-                                    </div>
+                    <div class="container">
+                        <?php if(!empty($alerta)){ ?>
+                            <div class="">
+                                <div class="alert alert-danger" role="alert">
+                                    <?php echo $alerta ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Producto"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="bi bi-archive-fill "></i>Crear roducto</a></td>                  
+                </div>
             </div>
             <div class="div col-md-8">
                 
@@ -30,7 +40,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                        while($row=mysqli_fetch_array($categoria)){
+                        foreach($ver as $vrol){
                         ?>
                         
                         <tr>
