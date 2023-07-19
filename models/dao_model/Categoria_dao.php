@@ -2,74 +2,60 @@
     class Categoria_dao{
         public function __construct(){
 			try {
-				$this->pdo = Database::connection();				
+				$db = new DataBase();
+				$this->pdo = $db->connection();				
+
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
 		}	
-        public function createCategoria($categoria_dto){
-            try {
-                $sql = 'INSERT INTO categoria VALUE (
-                    '.$categoria_dto->getIdCategoria().',
-                    "'.$categoria_dto->getNombreCategoria().'"
-                    )';
-                    
-                 mysqli_query($this->pdo,$sql);
-                
-                } catch (Exception $e) {
-                    die("....".$e->getMessage());	
-                }
+        public function verCategoriaDao(){
+            $sql = "SELECT * FROM categoria"
+            $resultado = $resultado = $this->pdo->query($sql);
+			$verCategoria = $resultado->fetchall();
+			return $verCategoria;
+        }
+        public function consultarCategoriaDao($idCategoria){
+            $sql = "SELECT * FROM categoria where id_categoria=$idCategoria";
+            $resultado = $this->pdo->query($sql);
+			$consulta = $resultado->fetchAll();
+			return $consulta;            
+        }
+        public function crearCategoriaDao($categoria_dto){
+            try{     
+                $sql = "INSERT INTO categoria (`id_categoria`,`nombre_categoria`) VALUE (?,?)";
+                $resultado = $this->pdo->prepare($sql);
+                $resultado->execute(array($categoria_dto->getIdCategoria(),$categoria_dto->getNombreCategoria()));
+                return $resultado->rowCount();
             }
-        public function readCategoriaDao(){
-            try{
-                $sql = 'SELECT * FROM categoria';
-	// Creamos las variable $dbh y le asignamos la conexión y la consulta $sql
-			$dbh = mysqli_query($this->pdo,$sql);
- 				return $dbh;
- 			} catch (Exception $e) {
- 				die($e->getMessage());
- 			}
-        }
-        public function consultarCategoriaDao($id){
-            try {
-            $sql = 'SELECT * FROM categoria where id_categoria='.$id.'';
-// Creamos las variable $dbh y le asignamos la conexión y la consulta $sql
-	$dbh = mysqli_query($this->pdo,$sql);
- 				return mysqli_fetch_row($dbh);
- 			} catch (Exception $e) {
- 				die($e->getMessage());
- 			}
-        }
-        public function eliminarCatergoriaDao($catid){
-            try {
-                $sql= 'DELETE FROM categoria WHERE id_categoria='.strval($catid);
-		$dbh = mysqli_query($this->pdo,$sql);
- 				return $dbh;
-				
- 			} catch (Exception $e) {
- 				die($e->getMessage());
- 			}
-        }
-        public function actualizarCategoriaDao($catmod){
-            try{
-               $sql = 'SELECT * FROM categoria where id_categoria='.$catmod.'';
-			
-               $dbh = mysqli_query($this->pdo,$sql);
-			return mysqli_fetch_row($dbh);
-				
-		} catch (Exception $e) {
-			die($e->getMessage());
+            catch (Exception $e) {
+                die("....".$e->getMessage());	
             }
         }
-        public function modificarCategoriaDao($idCategoria,$nombreCategoria){
+        public function modificarCategoriaDao($categoria_dto){
             try{
-                $sql = "UPDATE categoria SET nombre_categoria='$nombreCategoria' where id_categoria=$idCategoria";
-                $dbh = mysqli_query($this->pdo,$sql);
-                return $dbh;
-            } catch (Exception $e) {
+                $sql = "UPDATE categoria SET nombre_categoria=? where id_categoria=?";
+                $resultado = $this->pdo->prepare($sql);
+                $resultado->execute(array($categoria_dto->getNombreCategoria(),$categoria_dto->getIdCategoria()));
+                return $resultado->rowCount();
+            } 
+            catch (Exception $e) {
                 die($e->getMessage());
-		
+        
             }
         }   
+        
+        public function eliminarCatergoriaDao($id){
+            try {
+                $sql= "DELETE FROM categoria WHERE id_categoria=?";
+                $resultado = $this->pdo->prepare($sql);
+		$resultado->execute(array($id));
+		return $resultado->rowCount();
+				
+ 		} 
+	    catch (Exception $e) {
+ 		die($e->getMessage());
+ 		}
+        }
     }
 ?>
