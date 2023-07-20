@@ -19,7 +19,7 @@
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if (!empty($_POST['id_categoria'])&&!empty($_POST['nombre_categoria'])){
                     $categoria_dto=new Categoria_dto($_POST['id_categoria'],$_POST['nombre_categoria']);
-                    $this->categoriaDao->createCategoria($categoria_dto);               
+                    $this->categoriaDao->crearCategoriaDao($categoria_dto);               
                     header("Location: ?c=Categoria");
                 }
                 else{
