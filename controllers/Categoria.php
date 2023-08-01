@@ -37,7 +37,7 @@
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_categoria(){
-           $categoria_dto = new Categoria_dto ($_POST['id_categoria'],$_POST['nombre_categoria'])
+           $categoria_dto = new Categoria_dto ($_POST['id_categoria'],$_POST['nombre_categoria']);
            $this->categoriaDao->modificarCategoriaDao($categoria_dto);               
            header("Location: ?c=Categoria");   
         }

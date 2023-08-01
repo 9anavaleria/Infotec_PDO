@@ -11,9 +11,9 @@
                 <select class="form-control mb-3" name="id_categoria" placeholder="Categoria" >
                     <option selected>Elija la categoria</option>
                     <?php 
-                        while($row=mysqli_fetch_array($categoria)){
+                        foreach($verCategoria as $categoria){
                         ?>
-                        <option value='<?php echo $row['id_categoria']?>'> <?php echo $row['nombre_categoria']?></option>
+                        <option value='<?php echo $categoria['id_categoria']?>'> <?php echo $categoria['nombre_categoria']?></option>
                         <?php
                         }
                          ?>
@@ -48,27 +48,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        while($row=mysqli_fetch_array($producto)){
-                        ?>
+                        <?php foreach ($verProducto as $prod) { ?>
                         
                         <tr>
                             <td class="text-center">
-                                 <?php echo $row['nombre_categoria']?>
+                                 <?php echo $prod['nombre_categoria']?>
                             </td>
                             <td class="text-center"> 
-                                <?php echo $row['id_producto']?>
+                                <?php echo $prod['id_producto']?>
                             </td>
                             <td class="text-center">
-                                 <?php echo $row['nombre_producto']?>
+                                 <?php echo $prod['nombre_producto']?>
                             </td>
                             <td class="text-center"> 
-                                <?php echo $row['precio_producto']?>
+                                <?php echo $prod['precio_producto']?>
                             </td><td class="text-center">
-                                 <?php echo $row['exist_producto']?>
+                                 <?php echo $prod['exist_producto']?>
                             </td>
-                            <td class="text-center"><a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $row['id_producto']?>"><i class="bi bi-pencil-square"></i></a></td>
-                            <td  class="text-center"><a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $row['id_producto']?>"><i class="fa fa-trash"></i></a></td>
+                            <td class="text-center"><a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="bi bi-pencil-square"></i></a></td>
+                            <td  class="text-center"><a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?php
                         }

@@ -13,7 +13,7 @@
         }
         public function index(){
             // Vista de datos 
-            $verProducto = $this->productoDao->readProductoDao();
+            $verProducto = $this->productoDao->verProductoDao();
             $verCategoria = $this->categoriaDao->verCategoriaDao();
             $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_categoria'])){
@@ -25,8 +25,8 @@
                 if(!empty($_POST['id_categoria']) && !empty($_POST['id_producto']) && !empty($_POST['nombre_producto']) && !empty($_POST['precio_producto']) && !empty($_POST['exist_producto'])){
                     // Capturar datos
                     $producto_dto=new Producto_dto($_POST['id_categoria'],$_POST['id_producto'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
-                    
-                    $this->productoDao->createProducto($producto_dto);
+                    $producto_dto->getIdProducto();
+                    $this->productoDao->crearProductoDao($producto_dto);
                     header("Loaction: ?c=Producto");
                 }
                 else{
@@ -39,17 +39,21 @@
         }
         public function editar_producto(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-                $producto = $this->productoDao->actualizarProductoDao($_GET['id_producto'])[0];
+                $producto = $this->productoDao->consultarProductoDao($_GET['id_producto'])[0];
                 $categoria =$this->categoriaDao->verCategoriaDao();
+                
             }
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/2_products/2_2producto/producto.editar.php";
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_producto(){
-            $producto_dto = new Producto_dto ($_POST['id_categoria'],$_POST['id_producto'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto'])
-            $this->produdtoDao->modificarProductoDao($producto_dto);
+            $producto_dto = new Producto_dto ($_POST['id_categoria'],$_POST['id_producto'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
+            
+            $this->productoDao->modificarProductoDao($producto_dto);
             header("Loaction: ?c=Producto");
+        
+            
         }
         public function eliminar_producto(){
             $this->productoDao->eliminarProductoDao($_GET['id_producto']); 

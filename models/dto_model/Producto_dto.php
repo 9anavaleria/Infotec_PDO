@@ -7,7 +7,7 @@
         private $precioProducto;
         private $existProducto;        
         // Constructor
-        public function __construct5($idCategoria,
+        public function __construct($idCategoria,
         $idProducto,
         $nombreProducto,
         $precioProducto,

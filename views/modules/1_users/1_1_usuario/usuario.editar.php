@@ -14,7 +14,7 @@
                         foreach($verRol as $vrol){
                             
                             ?>
-                            <option selected value='<?php echo $vrol['id_rol']?>'> <?php echo $vrol['nombre_rol']?></option>
+                            <option selected value="<?php echo $vrol['id_rol']?>"> <?php echo $vrol['nombre_rol']?></option>
 
                             <?php } ?>
 

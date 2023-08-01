@@ -50,42 +50,5 @@
                 $this->usuarioDao->eliminarUsuarioDao($_GET['id_usuario']);
                 header("Location: ?c=Usuario"); 
             }
-               /*         
-                            
-            public function eliminar_usuario(){ 
-                if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-                    
-                    // Capturar Datos
-                    $this->usuarioDao->eliminarUsuarioDao($_GET['id_usuario']); 
-                }
-                $roles = $this->rolDao->readRolDao();
-                $usuario = $this->usuarioDao->readUsuarioDao();
-
-                require_once "views/roles/admin/header_dash.php";
-                require_once "views/modules/1_users/1_1_usuario/usuario.view.php";
-                require_once "views/roles/admin/footer.php";
-           
-        }
-        public function editar_usuario(){
-           
-            
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $editper =$this->usuarioDao->actualizarUsuarioDao($_GET['id_usuario']); 
-                $roles = $this->rolDao->readRolDao();
-              
-            }
-            require_once "views/roles/admin/header_dash.php";
-            require_once "views/modules/1_users/1_1_usuario/usuario.editar.php";
-            require_once "views/roles/admin/footer.php";
-        }
-        public function modificar_usuario(){
-           
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-           
-                $this->usuarioDao->modificarUsuarioDao($_POST['id_rol'],$_POST['id_usuario'],$_POST['nombres_usuario'],$_POST['apellidos_usuario'], $_POST['correo_usuario'], $_POST['telefono_usuario'],$_POST['pass_usuario']);               
-                header("Location: ?c=Usuario");
-            }
-            
-        }*/
     }
 ?>

@@ -10,7 +10,7 @@
 			}
 		}	
         public function verCategoriaDao(){
-            $sql = "SELECT * FROM categoria"
+            $sql = "SELECT * FROM categoria";
             $resultado = $resultado = $this->pdo->query($sql);
 			$verCategoria = $resultado->fetchall();
 			return $verCategoria;
