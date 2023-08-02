@@ -39,7 +39,7 @@
 			try{
 				$sql = "UPDATE usuarios SET id_rol=?, nombres_usuario=? ,apellidos_usuario=?,correo_usuario=?,telefono_usuario=?, pass_usuario=? where id_usuario=?";
 				$resultado = $this->pdo->prepare($sql);
-				$resultado->execute(array($usuario_dto->getIdRol(), $usuario_dto->getNombresUsuario(), $usuario_dto->getApellidosUsuario,$usuario_dto->getCorreoUsuario(), $usuario_dto->getTelefonoUsuario(),$usuario_dto->getPassUsuario(),$usuario_dto->getIdUsuario()));
+				$resultado->execute(array($usuario_dto->getIdRol(), $usuario_dto->getNombresUsuario(), $usuario_dto->getApellidosUsuario(),$usuario_dto->getCorreoUsuario(), $usuario_dto->getTelefonoUsuario(),$usuario_dto->getPassUsuario(),$usuario_dto->getIdUsuario()));
 				return $resultado->rowCount();
 			}
 			catch (Exception $e) {
