@@ -4,68 +4,52 @@
         
 		public function __construct(){
 			try {
-				$this->pdo = Database::connection();				
+				$db = new DataBase();
+				$this->pdo = $db->connection();				
+
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
 		}	
-        public function createServicio($servicio_dto){
-            try {
-                $sql='INSERT INTO servicios VALUES (
-                    '.$servicio_dto->getIdServicio().',
-                    "'.$servicio_dto->getNombreServicio().'",'.$servicio_dto->getPrecioServicio().')';
-                    
-                    mysqli_query($this->pdo,$sql);
-               
-                } catch (Exception $e) {
-                    die("....".$e->getMessage());	
-                }
+        public function verServicioDao(){
+            $sql = "SELECT * FROM servicios";
+            $resultado = $this->pdo->query($sql);
+            $verServicio = $resultado->fetchall()
         }
-        public function readServicioDao(){
-            try{
-                $sql='SELECT * FROM servicios';
-                $dbh = mysqli_query($this->pdo,$sql);
- 				return $dbh;
- 			} catch (Exception $e) {
- 				die($e->getMessage());
+        public function consultarServicioDao ($idServicio){
+            $sql = " SELECT * FROM servicios WHERE id_servicios=$idServicio";
+            $resultado = $this->pdo->query($sql);
+			$consulta = $resultado->fetchAll();
+			return $consulta;
+        }
+        public function crearServicioDao ($servicio_dto){
+            try {
+                $sql = "INSERT INTO servicios (`id_servicios`,`nombre_servicio`,`precio_servicio`) VALUES (?,?,?)";
+                $resultado = $this->pdo->prepare($sql);
+                $resultado->execute(array($servicio_dto->getIdServicio(),$servicio_dto->getNombreServicio(),$servicio_dto->getPrecioServicio()));
+                return $resultado->rowCount();
+            }catch (Exception $e) {
+                die("....".$e->getMessage());	
             }
         }
-        public function consultarServicioDao($servicio){
-            try {
-                $sql='SELECT * From servicios where id_servicios='.$servicio.'';
-                $dbh = mysqli_query($this->pdo,$sql);
- 				return mysqli_fetch_row($dbh);
- 			} catch (Exception $e) {
- 				die($e->getMessage());
+        public function modificarServicioDao($servicio_dto){
+            try{
+                $sql = "UPDATE servicios SET nombre_servicio=?, precio_servicio=? WHERE id_servicios=?";
+                $resultado = $this->pdo->prepare($sql);
+				$resultado->execute(array($servicio_dto->getNombreServicio(), $servicio_dto->getPrecioServicio(),$servicio_dto->getIdServicio()));
+				return $resultado->rowCount();
             }
         }
         public function eliminarServicioDao($servicioid){
             try {
-                $sql='DELETE FROM servicio WHERE id_servicios='.strval($servicioid);
-                $dbh = mysqli_query($this->pdo,$sql);
-                         return $dbh;
-                        
-                     } catch (Exception $e) {
-                         die($e->getMessage());
-            }
-        }
-        public function actualizarServicioDao($sermod){
-            try {
-                $sql='SELECT * From servicios where id_servicios="'.$sermod.'"';
-                $dbh = mysqli_query($this->pdo,$sql);
- 				return mysqli_fetch_row($dbh);
- 			} catch (Exception $e) {
- 				die($e->getMessage());
-            }
-        }
-        public function modificarServicioDao($idServicios,$nombreServicio,$precioServicio){
-            try {
-                $sql= "UPDATE servicios SET nombre_servicio='$nombreServicio', precio_servicio='$precioServicio' WHERE id_servicios='$idServicios'";
-                $dbh = mysqli_query($this->pdo,$sql);
-			return $dbh;
-		} catch (Exception $e) {
-			die($e->getMessage());
-            }
+                $sql="DELETE FROM servicio WHERE id_servicios=?";
+                $resultado = $this->pdo->prepare($sql);
+				$resultado->execute(array($id));
+				return $resultado->rowCount();
+			}
+			catch (Exception $e) {
+				die("....".$e->getMessage());	
+			}
         }
     }
 ?>
