@@ -1,5 +1,5 @@
 <?php
-    class Servicios_dao{
+    class Servicio_dao{
         private $pdo;
         
 		public function __construct(){
@@ -14,7 +14,7 @@
         public function verServicioDao(){
             $sql = "SELECT * FROM servicios";
             $resultado = $this->pdo->query($sql);
-            $verServicio = $resultado->fetchall()
+            $verServicio = $resultado->fetchall();
         }
         public function consultarServicioDao ($idServicio){
             $sql = " SELECT * FROM servicios WHERE id_servicios=$idServicio";
@@ -38,7 +38,9 @@
                 $resultado = $this->pdo->prepare($sql);
 				$resultado->execute(array($servicio_dto->getNombreServicio(), $servicio_dto->getPrecioServicio(),$servicio_dto->getIdServicio()));
 				return $resultado->rowCount();
-            }
+            }catch (Exception $e) {
+				die($e->getMessage());
+			}
         }
         public function eliminarServicioDao($servicioid){
             try {

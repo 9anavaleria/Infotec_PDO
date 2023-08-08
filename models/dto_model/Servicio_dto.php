@@ -1,5 +1,5 @@
 <?php
-    class Servicios_dto{
+    class Servicio_dto{
         private $idServicios;
         private $nombreServicio;
         private $precioServicio;

@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                        while($row=mysqli_fetch_array($servicios)){
+                        foreach($verServicio as $verSer){
                         ?>
                         
                         <tr>

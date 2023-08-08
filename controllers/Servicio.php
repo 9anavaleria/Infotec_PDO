@@ -4,10 +4,10 @@
     class Servicio{
         private $servicioDao;
         public function __construct(){
-            $this->ServicioDao = new Servicio_dao;
+            $this->servicioDao = new Servicio_dao;
         }
         public function index(){
-            $verServicios = $this->ServicioDao->verServicioDao();
+            $verServicios = $this->servicioDao->verServicioDao();
             $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_servicios'])){
                 $result=$this->servicioDao->consultarServicioDao($_GET['id_servicios']);
@@ -15,11 +15,10 @@
                 $servicio_dto->setIdServicio($result[0]);
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                if( && !empty($_POST['id_servicios']) && !empty($_POST['nombre_servicio']) && !empty($_POST['precio_servicio']))
-                {
+                if(!empty($_POST['id_servicios']) && !empty($_POST['nombre_servicio']) && !empty($_POST['precio_servicio'])){
                 $servicio_dto=new Servicio_dto($_POST['id_servicios'],$_POST['nombre_servicio'],$_POST['precio_servicio']);
                 
-                $this->servicioDao->crearServicio($servicio_dto);
+                $this->servicioDao->crearServicioDao($servicio_dto);
                 header("Location: ?c=Servicio");
                 }else{
                     $alerta = 'Existen campos vacios';
@@ -37,7 +36,7 @@
         }
         public function modificar_servicio(){
             $servicio_dto = new Servicio_dto ($_POST['id_servicios'],$_POST['nombre_servicio'],$_POST['precio_servicio']);
-            $this->servicioDao->modificar_servicio($servicio_dto);
+            $this->servicioDao->modificarServicioDao($servicio_dto);
             header("Location: ?c=Servicio");
         }
         

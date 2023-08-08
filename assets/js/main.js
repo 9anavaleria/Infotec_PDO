@@ -14,3 +14,21 @@ var barra = document.getElementById("barra")
       side_menu.classList.toggle("menu_side_mov");
       barra.classList.toggle("barra_borde")
    }     
+
+
+new DataTable('#tablaprod', {
+   columnDefs: [
+       {
+           targets: [0],
+           orderData: [0, 1]
+       },
+       {
+           targets: [1],
+           orderData: [1, 0]
+       },
+       {
+           targets: [4],
+           orderData: [4, 0]
+       }
+   ]
+});
