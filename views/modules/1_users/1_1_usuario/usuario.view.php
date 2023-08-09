@@ -16,12 +16,12 @@
                         }
                          ?>
                     </select>
-                    <input type="int" class="form-control mb-3" name="id_usuario" placeholder="# Identificación">
-                    <input type="text" class="form-control mb-3" name="nombres_usuario" placeholder="Nombres">
-                    <input type="text" class="form-control mb-3" name="apellidos_usuario" placeholder="Apellidos">
-                    <input type="text" class="form-control mb-3" name="correo_usuario" placeholder="Correo">
-                    <input type="text" class="form-control mb-3" name="telefono_usuario" placeholder="Telefono">
-                    <input type="password" class="form-control mb-3" name="pass_usuario" placeholder="Contraseña">
+                    <input type="int" class="form-control mb-3 numero" name="id_usuario" placeholder="# Identificación">
+                    <input type="text" class="form-control mb-3 texto" name="nombres_usuario" placeholder="Nombres">
+                    <input type="text" class="form-control mb-3 texto" name="apellidos_usuario" placeholder="Apellidos">
+                    <input type="text" class="form-control mb-3 email" name="correo_usuario" placeholder="Correo">
+                    <input type="text" class="form-control mb-3 numero" name="telefono_usuario" placeholder="Telefono">
+                    <input type="password" class="form-control mb-3 password" name="pass_usuario" placeholder="Contraseña">
                     <div class="container">
                         <?php if(!empty($alerta)){ ?>
                             <div class="">
@@ -36,6 +36,14 @@
                     </div>
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
+                <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Roles"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas fa-clipboard-user "></i>
+                    <div class= "parrafo">Crear Rol</div>
+                    </a>
+                    </td>
+                </div>
 
             </div>
             <div class="div col-md-9">
@@ -93,9 +101,9 @@
     </div>
 
 
-
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/validacion.js" charset="utf-8"></script>
 </body>

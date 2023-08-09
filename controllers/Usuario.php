@@ -16,7 +16,7 @@
                 $verRol = $this->rolDao->verRolDao();
                 $alerta = '';
                 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_rol'])){
-                    $result = $this->usuarioDao->consultarRolDao($_GET['id_rol']);
+                    $result = $this->usuarioDao->consultarUsuarioDao($_GET['id_rol']);
                     $usuario_dto = new Usuario_dto($result[0],$result[1]);
                     $usuario_dto->setIdUsuario($result[0]);
                 }
@@ -37,6 +37,7 @@
             }
             public function editar_usuario(){
                 $usuario = $this->usuarioDao->consultarUsuarioDao($_GET['id_usuario'])[0];
+                $rol = $this->rolDao->verRolDao();
                 require_once "views/roles/admin/header_dash.php";
                 require_once "views/modules/1_users/1_1_usuario/usuario.editar.php";
                 require_once "views/roles/admin/footer.php";

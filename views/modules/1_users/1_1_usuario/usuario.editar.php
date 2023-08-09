@@ -11,7 +11,7 @@
                 <select class="form-control mb-3" name="id_rol" placeholder="Rol" >
                     
                     <?php 
-                        foreach($verRol as $vrol){
+                        foreach($rol as $vrol){
                             
                             ?>
                             <option selected value="<?php echo $vrol['id_rol']?>"> <?php echo $vrol['nombre_rol']?></option>

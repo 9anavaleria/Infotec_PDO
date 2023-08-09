@@ -36,7 +36,8 @@
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_rol(){
-            $rol_dto = new Rol_dto ($_POST['nombre_rol']);
+            $rol_dto = new Rol_dto ($_POST['id_rol'], $_POST['nombre_rol']);
+            
             $this->rolDao->modificarRolDao($rol_dto);
             header("location: ?c=Roles");
         }

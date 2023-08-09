@@ -22,11 +22,14 @@
                     </div>
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
-                <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Usuario"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="fas fa-user-tie"></i>Crear Usuario</a></td>
-                    
-                    
-                                    </div>
+                <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Usuario"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas fa-user-tie"></i>
+                    <div class= "parrafo">Crear Usuario</div>
+                    </a>
+                    </td>
+                </div>
             </div>
             <div class="div col-md-8">
                 <table class="table justify-content-center col-11 ">
