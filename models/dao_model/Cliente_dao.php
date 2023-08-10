@@ -11,7 +11,7 @@ class Cliente_dao{
 			}
 		}
         public function verClienteDao(){
-            $sql = "SELECT * FROM clientes;";
+            $sql = "SELECT * FROM clientes";
             $resultado = $this->pdo->query($sql);
             
             $vercliente = $resultado->fetchAll();

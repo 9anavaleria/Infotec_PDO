@@ -33,11 +33,14 @@
                     </div>
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
-                <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Vehiculo"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="bi bi-person-lines-fill align-self-center"></i>Cliente</a></td>
-                    
-                    
-                                    </div>
+                <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Cliente"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas bi bi-person-lines-fill"></i>
+                    <div class= "parrafo">Crear Cliente</div>
+                    </a>
+                    </td>
+                </div>
             </div>
             <div class="div col-md-9">
                 

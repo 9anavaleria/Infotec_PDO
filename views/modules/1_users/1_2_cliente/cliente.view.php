@@ -28,11 +28,15 @@
                     </div>
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
-                <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Vehiculo"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="fas fa-motorcycle align-self-center"></i>Vehiculo</a></td>
-                    
-                    
-                                    </div>
+                <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Vehiculo"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas fa-motorcycle"></i>
+                    <div class= "parrafo">Crear Vehiculo</div>
+                    </a>
+                    </td>
+                </div>
+                
             </div>
             <div class="div col-md-9">
                 
@@ -50,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($vercliente as $cliente) { ?>
+                        <?php foreach($vercliente as $cliente){ ?>
                         <tr>
                             <td class="text-center">
                                  <?php echo $cliente['id_cliente']?>

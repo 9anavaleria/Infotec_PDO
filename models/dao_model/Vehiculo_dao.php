@@ -19,7 +19,7 @@
            
         }
         public function consultarVehiculoDao($idplaca){
-            $sql = "SELECT * from vehiculos where placa_vehiculo=$idplaca";
+            $sql = "SELECT * from vehiculos where placa_vehiculo='$idplaca'";
             $resultado = $this->pdo->query($sql);
             $consulta = $resultado->fetchAll();
             return $consulta; 

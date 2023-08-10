@@ -6,8 +6,8 @@
         <div class="row tablas">
             <div class="col-md-4">
                 <form method="post" action="?c=Roles" class="row g-3 needs-validation" novalidate>
-                    <input type="int" class="form-control mb-3" name="id_rol" placeholder="Codigo Rol">
-                    <input type="text" class="form-control" id="validationCustom02" value="" required name="nombre_rol" placeholder="Nombre rol">
+                    <input type="int" class="form-control mb-3" name="id_rol" placeholder="Codigo Rol" >
+                    <input type="text" class="form-control" id="validationCustom02" value="" required name="nombre_rol" placeholder="Nombre rol" pattern="[A-Za-z\s]+" required title="Ingresa solo letras">
                     <div class="container">
                         <?php if(!empty($alerta)){ ?>
                             <div class="">

@@ -45,7 +45,7 @@
         }
         public function eliminar_cliente(){
             $this->clienteDao->eliminarClienteDao($_GET['id_cliente']); 
-            
+            $vercliente = $this->clienteDao->verClienteDao();
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/1_users/1_2_cliente/cliente.view.php";
             require_once "views/roles/admin/footer.php";
