@@ -12,23 +12,25 @@
 		}	
         public function verVehiculoDao(){
             
-            $sql = "SELECT v.placa_vehiculo, c.nombre_cliente, c.apellido_cliente FROM vehiculos v inner join clientes c on v.id_cliente=c.id_cliente";
+            $sql = "SELECT v.id_vehiculo, v.placa_vehiculo, c.nombre_cliente, c.apellido_cliente FROM vehiculos v inner join clientes c on v.id_cliente=c.id_cliente";
             $resultado = $this->pdo->query($sql);
             $verVehiculo = $resultado->fetchAll();
+            
             return $verVehiculo;
            
         }
-        public function consultarVehiculoDao($idplaca){
-            $sql = "SELECT * from vehiculos where placa_vehiculo='$idplaca'";
+        public function consultarVehiculoDao($idvehiculo){
+            $sql = "SELECT * from vehiculos where id_vehiculo='$idvehiculo'";
             $resultado = $this->pdo->query($sql);
             $consulta = $resultado->fetchAll();
             return $consulta; 
         }
         public function crearVehiculoDao($vehiculo_dto){
             try{
-                $sql ="INSERT INTO vehiculos(`placa_vehiculo`, `id_cliente`)VALUES(?,?)";
+                $sql ="INSERT INTO vehiculos(`id_vehiculo`,`id_cliente`,`placa_vehiculo`)VALUES(?,?,?)";
                 $resultado = $this->pdo->prepare($sql);
-                $resultado->execute(array($vehiculo_dto->getPlaca(), $vehiculo_dto->getCliente()));
+                $resultado->execute(array($vehiculo_dto->getIdVehiculo(), $vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca()));
+                
                 return $resultado->rowCount();                
                 } 
                 catch (Exception $e) {
@@ -37,10 +39,10 @@
         }
         public function modificarVehiculoDao($vehiculo_dto){
             try{
-                $sql = "UPDATE vehiculos SET id_cliente =? where placa_vehiculo=?";
+                $sql = "UPDATE vehiculos SET  id_cliente=?, placa_vehiculo=? where id_vehiculo=?";
                 $resultado = $this->pdo->prepare($sql);
-                $resultado->execute(array($vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca()));
-                return $ $resultado->rowCount();
+                $resultado->execute(array($vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca(), $vehiculo_dto->getIdVehiculo()));
+                return $resultado->rowCount();
             } 
             catch (Exception $e) {
                 die($e->getMessage());
@@ -49,7 +51,7 @@
         }    
         public function eliminarVehiculoDao($placavehiculo){
             try{
-                $sql="DELETE FROM vehiculos WHERE placa_vehiculo=?";
+                $sql="DELETE FROM vehiculos WHERE id_vehiculo=?";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($placavehiculo));
                 return $resultado->rowCount();

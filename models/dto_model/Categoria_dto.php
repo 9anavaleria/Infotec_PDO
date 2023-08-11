@@ -2,7 +2,7 @@
 class Categoria_dto{
     private $idCategoria;
     private $nombreCategoria;
-    	public function __construct2($idCategoria,$nombreCategoria){
+    	public function __construct($idCategoria,$nombreCategoria){
         	$this ->idCategoria =$idCategoria;
         	$this ->nombreCategoria =$nombreCategoria;
 	}

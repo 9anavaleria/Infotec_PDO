@@ -7,7 +7,8 @@
             <div class="col-md-3">
                 
                 <form method="post" action="?c=Vehiculo" class="row g-3 needs-validation" novalidate>
-                    <select class="form-control mb-3" name="id_cliente" placeholder="Rol" >
+                    <input type="text" class="form-control mb-3" name="id_vehiculo" placeholder="Id Vehiculo">    
+                    <select class="form-control mb-3" name="id_cliente" placeholder="Cliente" >
                     <option selected>Elija el Cliente</option>
                     <?php 
                          foreach ($verCliente as $cliente) {
@@ -47,6 +48,7 @@
                 <table class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
+                            <th scope="col">Id</th>
                             <th scope="col">Cliente</th>
                             <th scope="col">Vehiculo</th>
                             <th scope="col">Modificar</th>
@@ -55,22 +57,24 @@
                     </thead>
                     <tbody>
                         <?php 
-                        if (is_array($verVehiculo) || is_object($verVehiculo)) {
+                        
                         foreach ($verVehiculo as $vehiculo){
                         ?>
                         
                         <tr>
+                            <td class="text-center">
+                                 <?php echo $vehiculo['id_vehiculo']?> 
                             <td class="text-center">
                                  <?php echo $vehiculo['nombre_cliente']?>  <?php echo $vehiculo['apellido_cliente']?>
                             </td>
                             <td class="text-center"> 
                                 <?php echo $vehiculo['placa_vehiculo']?>
                             </td>
-                            <td class="text-center"><a class="btn btn-warning" href="?c=Vehiculo&a=editar_vehiculo& placa_vehiculo=<?php echo $vehiculo['placa_vehiculo']?>"><i class="bi bi-pencil-square"></i></a></td>
-                            <td  class="text-center"><a class="btn btn-danger" href="?c=Vehiculo&a=eliminar_vehiculo& placa_vehiculo=<?php echo $vehiculo['placa_vehiculo']?>"><i class="fa fa-trash"></i></a></td>
+                            <td class="text-center"><a class="btn btn-warning" href="?c=Vehiculo&a=editar_vehiculo& id_vehiculo=<?php echo $vehiculo['id_vehiculo']?>"><i class="bi bi-pencil-square"></i></a></td>
+                            <td  class="text-center"><a class="btn btn-danger" href="?c=Vehiculo&a=eliminar_vehiculo& id_vehiculo=<?php echo $vehiculo['id_vehiculo']?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?php
-                        }}
+                        }
                          ?>
                            
                         </tbody>
