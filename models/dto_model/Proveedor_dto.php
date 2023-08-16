@@ -2,31 +2,33 @@
 class Proveedor_dto{
     private $idProveedor;
     private $nombreProveedor;
-    public function __construct(){
-        $a = func_get_args();
-        $i = func_num_args();
-        if (method_exists($this, $f='__construct'.$i)) {
-            call_user_func_array(array($this, $f), $a);
-        }
-    }
+    private $telefonoProveedor;
+    
     // Constructor
-    public function __construct12($idProveedor,$nombreProveedor){
-        $this->id_proveedor = $idProveedor;
-        $this->nombre_proveedor=$nombreProveedor;
+    public function __construct($idProveedor, $nombreProveedor, $telefonoProveedor){
+        $this->idProveedor = $idProveedor;
+        $this->nombreProveedor = $nombreProveedor;
+        $this->telefonoProveedor = $telefonoProveedor;
     }
     public function setIdProveedor($idProveedor){
-        $this->id_proveedor =$idProveedor;
+        $this->idProveedor =$idProveedor;
     }
     public function getIdProveedor(){
-        return $this->id_proveedor;
+        return $this->idProveedor;
     }
     public function setNombreProveedor($nombreProveedor){
-        $this->nombre_proveedor= $nombreProveedor;
+        $this->nombreProveedor= $nombreProveedor;
     }
     public function getNombreProveedor(){
-        return $this->nombre_proveedor	
-;
+        return $this->nombreProveedor;
     }
+    public function setTelefonoProveedor($telefonoProveedor){
+        $this->telefonoProveedor= $telefonoProveedor;
+    }
+    public function gettelefonoProveedor(){
+        return $this->telefonoProveedor;
+    }
+
 
 
 

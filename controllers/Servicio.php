@@ -29,7 +29,7 @@
             require_once "views/roles/admin/footer.php";
         }
         public function editar_servicio(){
-            $servicio_dto = $this->servicioDao->consultarServicioDao($_GET['id_servicios'])[0];
+            $servicio = $this->servicioDao->consultarServicioDao($_GET['id_servicios'])[0];
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/2_products/2_3servicio/servicio.editar.php";
             require_once "views/roles/admin/footer.php";

@@ -20,7 +20,7 @@
             $this->idServicios=$idServicios;
         }
         public function getIdServicio(){
-            return $this->idServicio;
+            return $this->idServicios;
         }
         public function setNombreServico($nombreServicio){
             $this->nombreServicio=$nombreServicio;

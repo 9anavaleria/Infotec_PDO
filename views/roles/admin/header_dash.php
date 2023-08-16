@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="assets/css/styles-dashboard.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
 	<link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+	
 </head>
 <body id="body">
 		<nav class="navbar-expand-lg navbar-light nav navbar-nav navbar-right sticky-top d-flex justify-content-between" id="barra">

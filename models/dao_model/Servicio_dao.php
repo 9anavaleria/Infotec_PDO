@@ -15,9 +15,10 @@
             $sql = "SELECT * FROM servicios";
             $resultado = $this->pdo->query($sql);
             $verServicio = $resultado->fetchall();
+            return $verServicio;
         }
         public function consultarServicioDao ($idServicio){
-            $sql = " SELECT * FROM servicios WHERE id_servicios=$idServicio";
+            $sql = " SELECT * FROM servicios WHERE id_servicios='$idServicio'";
             $resultado = $this->pdo->query($sql);
 			$consulta = $resultado->fetchAll();
 			return $consulta;
@@ -42,9 +43,9 @@
 				die($e->getMessage());
 			}
         }
-        public function eliminarServicioDao($servicioid){
+        public function eliminarServicioDao($id){
             try {
-                $sql="DELETE FROM servicio WHERE id_servicios=?";
+                $sql="DELETE FROM servicios WHERE id_servicios=?";
                 $resultado = $this->pdo->prepare($sql);
 				$resultado->execute(array($id));
 				return $resultado->rowCount();

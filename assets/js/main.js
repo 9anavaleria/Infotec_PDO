@@ -32,3 +32,91 @@ new DataTable('#tablaprod', {
        }
    ]
 });
+new DataTable('#tablarol', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [1],
+            orderData: [1, 0]
+        },
+        {
+            targets: [2],
+            orderData: [2, 0]
+        }
+    ]
+ });
+ new DataTable('#tablausuario', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [1],
+            orderData: [1, 0]
+        },
+        {
+            targets: [8],
+            orderData: [8, 0]
+        }
+    ]
+ });
+ new DataTable('#tablacliente', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [1],
+            orderData: [1, 0]
+        },
+        {
+            targets: [7],
+            orderData: [7, 0]
+        }
+    ]
+ });
+ new DataTable('#tablavehiculo', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [1],
+            orderData: [1, 0]
+        },
+        {
+            targets: [3],
+            orderData: [3, 0]
+        }
+    ]
+ });
+ new DataTable('#tablacategoria', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [1],
+            orderData: [1, 0]
+        }
+    ]
+ });
+ new DataTable('#tablaservivio', {
+    columnDefs: [
+        {
+            targets: [0],
+            orderData: [0, 1]
+        },
+        {
+            targets: [4],
+            orderData: [4, 0]
+        }
+    ]
+ });

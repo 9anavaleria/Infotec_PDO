@@ -31,7 +31,7 @@
             require_once "views/roles/admin/footer.php";
         }
         public function editar_categoria(){    
-            $categoria = $this->categoriaDao->actualizarCategoriaDao($_GET['id_categoria'])[0];
+            $categoria = $this->categoriaDao->consultarCategoriaDao($_GET['id_categoria'])[0];
             require_once "views/roles/admin/header_dash.php";
             require_once "views/modules/2_products/2_1categoria/categoria.editar.php";
             require_once "views/roles/admin/footer.php";

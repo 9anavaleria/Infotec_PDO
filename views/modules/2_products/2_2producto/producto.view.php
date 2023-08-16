@@ -27,58 +27,79 @@
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
                 <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Categoria"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="bi bi-columns-gap"></i>Categorias</a></td>
-                    <td  class="text-center"><a class="btn btn-secondary" href="?c=Proveedor"tyle="    border-top-width: 6px;" ><i class="bi bi-person-video2"></i>Proveedor</a></td>
-                    
-                                    </div>
-                    
-
-            </div>
-            <div class="div col-md-9">
-           
-                <table id="tablaprod" class="table justify-content-center col-11 ">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Id </th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>   
-                            <th scope="col">Existencias</th>
-                            <th scope="col">Modificar</th>
-                            <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($verProducto as $prod) { ?>
-                        
-                        <tr>
-                            <td class="text-center">
-                                 <?php echo $prod['nombre_categoria']?>
-                            </td>
-                            <td class="text-center"> 
-                                <?php echo $prod['id_producto']?>
-                            </td>
-                            <td class="text-center">
-                                 <?php echo $prod['nombre_producto']?>
-                            </td>
-                            <td class="text-center"> 
-                                <?php echo $prod['precio_producto']?>
-                            </td><td class="text-center">
-                                 <?php echo $prod['exist_producto']?>
-                            </td>
-                            <td class="text-center"><a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="bi bi-pencil-square"></i></a></td>
-                            <td  class="text-center"><a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                        <?php
-                        }
-                         ?>
-                           
-                        </tbody>
+                <div class="container">
+                        <?php if(!empty($alerta)){ ?>
+                            <div class="">
+                                <div class="alert alert-danger" role="alert">
+                                    <?php echo $alerta ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Categoria"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas bi bi-columns-gap"></i>
+                    <div class= "parrafo">Crear Categoria</div>
+                    </a>
+                    </td>
+                </div> <div class="tamaño">
+                    <td  class="text-center">
+                        <a class="btn-otro btn-secondary" href="?c=Proveedor"     style="border-top-width: 6px;margin-bottom: 5px;">
+                            <i class="fas bi bi-archive-fill"></i>
+                    <div class= "parrafo">Crear Proveedor</div>
+                    </a>
+                    </td>
+                </div>  
             </div>
         </div>
-    </div>
-
-
+        <div class="div col-md-9">
+            <table id="tablaprod" class="table justify-content-center col-11 ">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Id </th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>   
+                        <th scope="col">Existencias</th>
+                        <th scope="col">Modificar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($verProducto as $prod) { ?>
+                    <tr>
+                        <td class="text-center">
+                            <?php echo $prod['nombre_categoria']?>
+                        </td>
+                        <td class="text-center"> 
+                            <?php echo $prod['id_producto']?>
+                        </td>
+                        <td class="text-center">
+                            <?php echo $prod['nombre_producto']?>
+                        </td>
+                        <td class="text-center"> 
+                            <?php echo $prod['precio_producto']?>
+                        </td><td class="text-center">
+                            <?php echo $prod['exist_producto']?>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="bi bi-pencil-square"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                        <?php
+                        }
+                        ?>
+                </tbody>
+            </div>
+                </div>
 
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/popper.min.js"></script>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <body>
     <div class="container">
     <h1 class="titulos mt-1">Usuario</h1>
@@ -48,7 +49,7 @@
             </div>
             <div class="div col-md-9">
                 
-                <table class="table justify-content-center col-11 ">
+                <table id="tablausuario"class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Rol</th>
@@ -106,4 +107,12 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script src="js/validacion.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </body>

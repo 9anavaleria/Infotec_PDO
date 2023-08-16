@@ -8,18 +8,18 @@
                
                     <div class="col-md-4">
                         <label for="id_servicios" class="form-label">Id Servicio</label>
-                        <input type="int" class="form-control mb-3" name="id_servicios" placeholder="Id Servicio" value="<?php echo $edtiser[0]?>"  >
+                        <input type="int" class="form-control mb-3" name="id_servicios" placeholder="Id Servicio" value="<?php echo $servicio['id_servicios']?>"  >
                         </div>
                     <div class="col-md-4">
                         <label for="nombre_servicio" class="form-label">Nombre Servicio</label>
-                        <input type="text" class="form-control" id="nombre_servicio" required name="nombre_servicio" placeholder="Nombre Servicio" value="<?php echo $edtiser[1]?>">
+                        <input type="text" class="form-control" id="nombre_servicio" required name="nombre_servicio" placeholder="Nombre Servicio" value="<?php echo $servicio['nombre_servicio']?>">
                         </div>
                         <div class="col-md-4">
                         <label for="precio_servicio" class="form-label">Precio Servicio</label>
-                        <input type="text" class="form-control" id="precio_servicio" required name="precio_servicio" placeholder="Precio Servicio" value="<?php echo $edtiser[2]?>">
+                        <input type="text" class="form-control" id="precio_servicio" required name="precio_servicio" placeholder="Precio Servicio" value="<?php echo $servicio['precio_servicio']?>">
                         </div>
                     <input type="submit" class="btn btn-enviar mt-2 ">
-                    
+                    <a type="button" href="?c=Servicio" class="btn btn-danger mt-2 ml-1 "> Cancelar </a>
                 </form>
 
             </div>
