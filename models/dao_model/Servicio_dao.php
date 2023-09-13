@@ -15,15 +15,16 @@
             $sql = "SELECT * FROM servicios";
             $resultado = $this->pdo->query($sql);
             $verServicio = $resultado->fetchall();
+            
             return $verServicio;
         }
-        public function consultarServicioDao ($idServicio){
+        public function consultarServicioDao($idServicio){
             $sql = " SELECT * FROM servicios WHERE id_servicios='$idServicio'";
             $resultado = $this->pdo->query($sql);
 			$consulta = $resultado->fetchAll();
 			return $consulta;
         }
-        public function crearServicioDao ($servicio_dto){
+        public function crearServicioDao($servicio_dto){
             try {
                 $sql = "INSERT INTO servicios (`id_servicios`,`nombre_servicio`,`precio_servicio`) VALUES (?,?,?)";
                 $resultado = $this->pdo->prepare($sql);
@@ -43,16 +44,24 @@
 				die($e->getMessage());
 			}
         }
-        public function eliminarServicioDao($id){
+        public function eliminarServicioDao($idServ){
             try {
                 $sql="DELETE FROM servicios WHERE id_servicios=?";
                 $resultado = $this->pdo->prepare($sql);
-				$resultado->execute(array($id));
+				$resultado->execute(array($idServ));
 				return $resultado->rowCount();
 			}
 			catch (Exception $e) {
 				die("....".$e->getMessage());	
 			}
         }
+
+        public function precioServicioDao($id){
+            $sql = " SELECT precio_servicio FROM servicios WHERE id_servicios='$id'";
+            $resultado = $this->pdo->query($sql);
+			$consulta = $resultado->fetch();
+            echo $consulta[0];
+        }
+
     }
 ?>

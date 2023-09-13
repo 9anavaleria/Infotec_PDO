@@ -3,7 +3,6 @@
         /* ATRIBUTOS */        
         private $codigoRol;
         private $nombreRol;
-       		
         // Constructor
         public function __construct($codigoRol,$nombreRol){
 			$this->codigoRol = $codigoRol;

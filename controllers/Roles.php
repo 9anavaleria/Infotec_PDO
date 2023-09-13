@@ -1,7 +1,6 @@
 <?php
     require_once "models/dto_model/Rol_dto.php";
     require_once "models/dao_model/Rol_dao.php";
-
     class Roles{
         private $rolDao;
         public function __construct(){

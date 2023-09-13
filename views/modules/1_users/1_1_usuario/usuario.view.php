@@ -4,9 +4,7 @@
     <h1 class="titulos mt-1">Usuario</h1>
     <hr>
         <div class="row tablas">
-           
             <div class="col-md-3">
-                
                 <form method="post" action="?c=Usuario" class="row g-3 needs-validation" novalidate>
                     <select class="form-control mb-3" name="id_rol" placeholder="Rol" >
                     <option selected>Elija el rol</option>
@@ -15,7 +13,7 @@
                         <option value='<?php echo $vrol['id_rol']?>'> <?php echo $vrol['nombre_rol']?></option>
                         <?php
                         }
-                         ?>
+                        ?>
                     </select>
                     <input type="int" class="form-control mb-3 numero" name="id_usuario" placeholder="# Identificación">
                     <input type="text" class="form-control mb-3 texto" name="nombres_usuario" placeholder="Nombres">
@@ -23,6 +21,7 @@
                     <input type="text" class="form-control mb-3 email" name="correo_usuario" placeholder="Correo">
                     <input type="text" class="form-control mb-3 numero" name="telefono_usuario" placeholder="Telefono">
                     <input type="password" class="form-control mb-3 password" name="pass_usuario" placeholder="Contraseña">
+                    <input type="int" class="form-control mb-3 numero" name="estado_usuario" placeholder="Estado">
                     <div class="container">
                         <?php if(!empty($alerta)){ ?>
                             <div class="">
@@ -45,10 +44,8 @@
                     </a>
                     </td>
                 </div>
-
             </div>
             <div class="div col-md-9">
-                
                 <table id="tablausuario"class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
@@ -58,7 +55,6 @@
                             <th scope="col">Apellido</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Telefono</th>
-                            <th scope="col">Contraseña</th>
                             <th scope="col">Modificar</th>
                             <th scope="col">Eliminar</th>
                         </tr>
@@ -67,35 +63,30 @@
                         <?php 
                         foreach ($verUsuario as $usuario){
                         ?>
-                        
                         <tr>
                             <td class="text-center">
-                                 <?php echo $usuario['nombre_rol']?>
+                                <?php echo $usuario['nombre_rol']?>
                             </td>
                             <td class="text-center"> 
                                 <?php echo $usuario['id_usuario']?>
                             </td>
                             <td class="text-center">
-                                 <?php echo $usuario['nombres_usuario']?>
+                                <?php echo $usuario['nombres_usuario']?>
                             </td>
                             <td class="text-center"> 
                                 <?php echo $usuario['apellidos_usuario']?>
                             </td><td class="text-center">
-                                 <?php echo $usuario['correo_usuario']?>
+                                <?php echo $usuario['correo_usuario']?>
                             </td>
                             <td class="text-center"> 
                                 <?php echo $usuario['telefono_usuario']?>
-                            </td>
-                            <td class="text-center" type="password">
-                                 <?php echo $usuario['pass_usuario']?>
                             </td>
                             <td class="text-center"><a class="btn btn-warning" href="?c=Usuario&a=editar_usuario& id_usuario=<?php echo $usuario['id_usuario']?>"><i class="bi bi-pencil-square"></i></a></td>
                             <td  class="text-center"><a class="btn btn-danger" href="?c=Usuario&a=eliminar_usuario& id_usuario=<?php echo $usuario['id_usuario']?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?php
                         }
-                         ?>
-                           
+                        ?>
                         </tbody>
             </div>
         </div>

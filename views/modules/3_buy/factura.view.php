@@ -1,71 +1,69 @@
-<body>
-    <div class="container">
-    <h1 class="titulos mt-1">Facturas</h1>
-    <hr>
-        <div class="row tablas">
-           
-            <div class="col-md-3">
-                
-               
-                <div class="centarboton">
-                    <td  class="text-center"><a class="btn btn-secondary boton-factura" href="?c=Factura&a=crearFactura"     style="border-top-width: 6px;margin-bottom: 5px;"><i class="bi bi-file-earmark-plus facturai"></i>Crear factura</a></td>
-                    
-                    
-                                    </div>
-                    
 
-            </div>
-            <div class="div col-md-9">
-                
-                <table class="table justify-content-center col-11 ">
+<div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+        <?php 
+            foreach($factura[1] as $info){
+        ?>
+                <h1 class="titulos mt-1">Factura - No <?php echo $info['id_factura']?></h1>
+    <hr>
+    <div class="div col-md-12">
+        
+        <div > <label class="tituloFac col-md-2">Fecha Factura: </label><label class="col-md-6"><?php echo $info['fecha_factura']?></label></div>
+        <div > <label class="tituloFac col-md-2">Nombre Cliente: </label><label class="col-md-6"><?php echo $info['cliente']?></label></div>
+        <div > <label class="tituloFac col-md-2">Placa Vehiculo: </label><label class="col-md-6"><?php echo $info['vehiculo']?></label></div>
+
+
+        <?php  } ?>
+        <div class="centabla">
+                <table id="tablaproveedor" class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Id Factura</th>
-                            <th scope="col">Id Cliente</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Vehículo</th>   
-                            <th scope="col">Total</th>
-                            <th scope="col">Modificar</th>
-                            <th scope="col">Eliminar</th>
+                            <th scope="col">Id producto/servicio</th>
+                            <th scope="col">Nombre producto/servicio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Valor</th>
                         </tr>
                     </thead>
                     <tbody>
-                       
+                        <?php 
+                        foreach($factura[0] as $prov){
+                        ?>
                         
                         <tr>
-                            <td class="text-center" type="date">
-                                26-09-2022
+                            <td class="text-center">
+                                <?php echo $prov['id_producto']?>
                             </td>
                             <td class="text-center"> 
-                                1
-                            </td>
-                            <td class="text-center">
-                            2313344
+                                <?php echo $prov['nombre_producto']?>
                             </td>
                             <td class="text-center"> 
-                            Carla Gomez
+                                <?php echo $prov['cantidad']?>
                             </td>
-                            <td class="text-center">
-                            QSC854
+                            <td class="text-center"> 
+                                <?php echo $prov['valor_venta']?>
                             </td>
-                            <td class="text-center">
-                                 $169.000
-                            </td>
-                            <td class="text-center"><a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $row['id_producto']?>"><i class="bi bi-pencil-square"></i></a></td>
-                            <td  class="text-center"><a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $row['id_producto']?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
-                      
-                           
+                            <?php
+                        }
+                        ?>
+                        
+                        <tr>
+                            <td  colspan="3" class="text-center"> 
+                                Total
+                            </td>
+                            
+                            <td class="text-center"> 
+                                <?php echo $prov['total_pedido']?>
+                            </td>
+                                
+                        </tr>
                         </tbody>
+                    </table>
+                    </div>
             </div>
         </div>
     </div>
 
 
-
-    <script src="js/jquery.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/main.js" charset="utf-8"></script>
 </body>

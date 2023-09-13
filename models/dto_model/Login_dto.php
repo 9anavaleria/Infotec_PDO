@@ -1,34 +1,24 @@
 <?php
     class Login_dto{
-        private $idUsuario;
-        private $contraseña;
-        public function __construct(){
-			$a = func_get_args();
-			$i = func_num_args();
-			if (method_exists($this, $f='__construct'.$i)) {
-				call_user_func_array(array($this, $f), $a);
-                
-			}
-            
-		}
-        
+        private $usuario;
+        private $pass;        
         // Constructor
-        public function __construct5($idUsuario,$contraseña,){
-            $this->idUsuario = $idUsuario;
-            $this->contraseña = $contraseña;
+        public function __construct($usuario,$pass){
+            $this->usuario = $usuario;
+            $this->pass = $pass;
             
         }
-        public function setIdUsuario($idUsuario){
-            $this->idUsuario = $idUsuario;
+        public function setUsuario($usuario){
+            $this->usuario = $usuario;
         }
-        public function getIdUsuario(){
-            return $this->idUsuario;
+        public function getUsuario(){
+            return $this->usuario;
         }
-        public function setContraseña($contraseña){
-            $this->contraseña = $contraseña;
+        public function setPass($pass){
+            $this->pass = $pass;
         }
-        public function getContraseña(){
-            return $this->contraseña;
+        public function getPass(){
+            return $this->pass;
         }
     
     }

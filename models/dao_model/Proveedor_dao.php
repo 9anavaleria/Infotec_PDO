@@ -3,67 +3,57 @@
         private $pdo;
         public function __construct(){
 			try {
-				$this->pdo = Database::connection();				
+				$db = new DataBase();
+				$this->pdo = $db->connection();				
+
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
-		}	
-        public function createProveedor($proveedor_dto){
-            try{
-                $sql='INSERT INTO proveedrores VALUES(
-                    '.$proveedor_dto->getIdProveedor().',"'.$proveedor_dto->getNombreProveedor().'"
-                    )';
-                mysqli_query($this->pdo,$sql);
-                
-			} catch (Exception $e) {
-				die("....".$e->getMessage());
-            }
+		}
+        public function verProveedorDao(){
+            $sql= "SELECT * FROM proveedores";
+            $resultado = $this->pdo->query($sql);
+            $verProveedor = $resultado->fetchall();
+            return $verProveedor;
         }
-        public function readProveedorDao(){
-            try{
-                $sql='SELECT * FROM proveedores';
-                $dbh = mysqli_query($this->pdo,$sql);
- 				return $dbh;
- 			} catch (Exception $e) {
- 				die($e->getMessage());
-            }
+        public function consultarProveedorDao($codigoProv){
+            $sql = "SELECT * FROM proveedores where id_proveedor='$codigoProv'";
+			
+			$resultado = $this->pdo->query($sql);
+			
+			$consulta = $resultado->fetchAll();
+			
+			return $consulta;
         }
-        public function consultarProveedorDao($id){
+        public function createProveedorDao($proveedor_dto){
             try {
-                $sql='SELECT * FROM proveedores where id_proveedor='.$id.'';
-            $dbh = mysqli_query($this->pdo,$sql);
-                return mysqli_fetch_row($dbh);
+                $sql = "INSERT INTO proveedores (`id_proveedor`, `nombre_proveedor`, `telefono_proveedor`) VALUES (?,?,?)";
+				$resultado = $this->pdo->prepare($sql);
+				$resultado->execute(array($proveedor_dto->getIdProveedor(),$proveedor_dto->getNombreProveedor(),$proveedor_dto->gettelefonoProveedor()));
+				return $resultado->rowCount();
             } catch (Exception $e) {
                 die($e->getMessage());   
             }
         }
-        public function eliminarProveedoresDao($proveid){
+        public function modificarProveedorDao($proveedor_dto){
             try {
-                $sql='DELETE FROM proveedores WHERE id_proveedor='.strval($proveid);
-                $dbh = mysqli_query($this->pdo,$sql);
- 				return $dbh;
+                $sql = "UPDATE proveedores SET nombre_proveedor=?, telefono_proveedor=? where id_proveedor=?";
+                $resultado = $this->pdo->prepare($sql);
+				$resultado->execute(array($proveedor_dto->getNombreProveedor(),$proveedor_dto->gettelefonoProveedor(),$proveedor_dto->getIdProveedor()));
+				return $resultado->rowCount();
+        } catch (Exception $e) {
+            die($e->getMessage());
+            }
+        }
+        public function eliminarProveedorDao($proveid){
+            try {
+                $sql="DELETE FROM proveedores WHERE id_proveedor=?";
+                $resultado = $this->pdo->prepare($sql);
+				$resultado->execute(array($proveid));
+				return $resultado->rowCount();
 				
  			} catch (Exception $e) {
  				die($e->getMessage());
-            }
-        }
-        public function actualizarProveedorDao($idprov){
-            try {
-                $sql = 'SELECT * FROM proveedores where id_proveedor='.$idprov.'';
-                $dbh = mysqli_query($this->pdo,$sql);
-			return mysqli_fetch_row($dbh);
-				
-		} catch (Exception $e) {
-			die($e->getMessage());
-            }
-        }
-        public function modificarProveedoresDao($idProveedor,$nombreProveedor){
-            try {
-                $sql="UPDATE proveedores SET nombre_proveedor='$nombreProveedor' where id_proveedor";
-                $dbh = mysqli_query($this->pdo,$sql);
-			return $dbh;
-		} catch (Exception $e) {
-			die($e->getMessage());
             }
         }
     }

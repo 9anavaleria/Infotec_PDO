@@ -48,19 +48,24 @@
 			}
         }
         public function eliminarProductoDao($productoid){
-        try{
-            $sql = "DELETE FROM productos WHERE id_producto=?";
-            $resultado = $this->pdo->prepare($sql);
+            try{
+                $sql = "DELETE FROM productos WHERE id_producto=?";
+                $resultado = $this->pdo->prepare($sql);
+                
+                $resultado->execute(array($productoid));
+                return $resultado->rowCount();
             
-            $resultado->execute(array($productoid));
-           
-            return $resultado->rowCount();
-        
+            }
+            catch (Exception $e) {
+                die("....".$e->getMessage());	
+            }
         }
-        catch (Exception $e) {
-            die("....".$e->getMessage());	
+        public function precioProductoDao($id){
+            $sql = " SELECT precio_producto FROM productos WHERE id_producto='$id'";
+            $resultado = $this->pdo->query($sql);
+			$consulta = $resultado->fetch();
+            echo $consulta[0];
         }
-       }
     }
 
 ?>

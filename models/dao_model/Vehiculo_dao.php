@@ -11,13 +11,10 @@
 			}
 		}	
         public function verVehiculoDao(){
-            
             $sql = "SELECT v.id_vehiculo, v.placa_vehiculo, c.nombre_cliente, c.apellido_cliente FROM vehiculos v inner join clientes c on v.id_cliente=c.id_cliente";
             $resultado = $this->pdo->query($sql);
             $verVehiculo = $resultado->fetchAll();
-            
             return $verVehiculo;
-           
         }
         public function consultarVehiculoDao($idvehiculo){
             $sql = "SELECT * from vehiculos where id_vehiculo='$idvehiculo'";
@@ -30,7 +27,6 @@
                 $sql ="INSERT INTO vehiculos(`id_vehiculo`,`id_cliente`,`placa_vehiculo`)VALUES(?,?,?)";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($vehiculo_dto->getIdVehiculo(), $vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca()));
-                
                 return $resultado->rowCount();                
                 } 
                 catch (Exception $e) {
@@ -46,7 +42,6 @@
             } 
             catch (Exception $e) {
                 die($e->getMessage());
-    
             }
         }    
         public function eliminarVehiculoDao($placavehiculo){
@@ -59,6 +54,12 @@
             catch (Exception $e) {
                 die($e->getMessage());
             }
+        }
+        public function buscarVehiculoDao($id){
+            $sql = " SELECT id_vehiculo, placa_vehiculo FROM vehiculos WHERE id_cliente ='$id'";
+            $resultado = $this->pdo->query($sql);
+			$consulta = $resultado->fetchAll();
+            return $consulta;
         }
         
         

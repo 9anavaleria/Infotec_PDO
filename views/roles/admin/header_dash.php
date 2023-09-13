@@ -74,22 +74,22 @@
 					<h4>Vehiculos</h4>
 					</div>
 				</a>
-				<a href="#">
+				<a href="?c=Productos">
 					<div class="option">
 						<i class= "bi bi-archive-fill " title="Productos"></i>
 						<h4>Productos</h4>
 					</div>
 				</a>
-				<a href="#">
+				<a href="?c=Servicios">
+					<div class="option">
+						<i class="bi bi-tools" title="Inventario"></i>
+					<h4>Servicios</h4>
+				</div>
+				</a>
+				<a href="?c=Factura">
 					<div class="option">
 						<i class="fas fa-cash-register" ></i>
 					<h4>Compras</h4>
-				</div>
-				</a>
-				<a href="#">
-					<div class="option">
-						<i class="bi bi-stack" title="Inventario"></i>
-					<h4>Inventario</h4>
 				</div>
 				</a>
 				<a href="#">

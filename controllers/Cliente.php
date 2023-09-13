@@ -11,7 +11,7 @@
             $vercliente = $this->clienteDao->verClienteDao();
             if ($_SERVER ['REQUEST_METHOD'] == 'GET' && isset ($_GET['id_cliente'])){
                 $result =$this->clienteDao->consultarClienteDao($_GET['id_cliente']);
-                $cliente_dto=new Cliente_dto($result[0],$result[1]);
+                $cliente_dto=new Cliente_dto($result[0],$result[1],$result[2],$result[3],$result[4],$result[5]);
                 $cliente_dto->setIdCliente($result[0]);
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){        

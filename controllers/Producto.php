@@ -18,7 +18,7 @@
             $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_categoria'])){
                 $result =$this->productoDao->consultarProductoDao($_GET['id_categoria']);
-                $Producto_dto=new Producto_dto($result[0],$result[1]);
+                $Producto_dto=new Producto_dto($result[0],$result[1],$result[2],$result[3],$result[4]);
                 $Producto_dto->setIdCategoria($result[0]);
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){

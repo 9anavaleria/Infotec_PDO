@@ -7,7 +7,6 @@
         private $apellidoCliente;
         private $telefonoCliente;
         private $correoCliente;
-
         public function __construct($idCliente, $identificacionCliente,$nombreCliente,  $apellidoCliente,$telefonoCliente,     $correoCliente){
             $this->idCliente= $idCliente;
             $this->identificacionCliente= $identificacionCliente;

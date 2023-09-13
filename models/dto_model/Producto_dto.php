@@ -14,9 +14,9 @@
         $existProducto){
             $this->idCategoria = $idCategoria;
             $this->idProducto = $idProducto;
-            $this->nombreProducto =$nombreProducto;
-            $this ->precioProducto= $precioProducto;
-            $this -> existProducto=$existProducto;
+            $this->nombreProducto = $nombreProducto;
+            $this ->precioProducto = $precioProducto;
+            $this -> existProducto = $existProducto;
         }
         // Id Categoría
         public function setIdCategoria($idCategoria){
@@ -34,21 +34,21 @@
         }
         // Nombre Producto
         public function setNombreProducto($nombreProducto){
-            $this->nombreProducto =$nombreProducto;
+            $this->nombreProducto = $nombreProducto;
         }
         public function getNombreProducto(){
             return $this->nombreProducto;
         }
         //Precio Producto
         public function setPrecioProducto($precioProducto){
-            $this ->precioProducto= $precioProducto;
+            $this ->precioProducto = $precioProducto;
         }
         public function getPrecioProducto(){
             return $this ->precioProducto;
         }
         // Existencia Producto
         public function setExistProducto($existProducto){
-            $this -> existProducto=$existProducto;
+            $this -> existProducto = $existProducto;
         }
         public function getExistProducto(){
             return $this -> existProducto;

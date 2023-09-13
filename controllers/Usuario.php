@@ -9,7 +9,6 @@
             public function __construct(){
                 $this->usuarioDao = new Usuario_dao;
                 $this->rolDao = new Rol_dao;
-
             }
             public function index(){
                 $verUsuario = $this->usuarioDao->verUsuarioDao();
@@ -17,14 +16,13 @@
                 $alerta = '';
                 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_rol'])){
                     $result = $this->usuarioDao->consultarUsuarioDao($_GET['id_rol']);
-                    $usuario_dto = new Usuario_dto($result[0],$result[1]);
+                    $usuario_dto = new Usuario_dto($result[0],$result[1],$result[2],$result[3],$result[4],$result[5],$result[6]);
                     $usuario_dto->setIdUsuario($result[0]);
                 }
                 elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if (!empty($_POST['id_rol']) && !empty($_POST['id_usuario']) && !empty($_POST['nombres_usuario']) && !empty($_POST['apellidos_usuario']) && !empty($_POST['correo_usuario']) && !empty($_POST['telefono_usuario']) && !empty($_POST['pass_usuario'])){
                         $usuario_dto = new Usuario_dto ($_POST['id_rol'],$_POST['id_usuario'],$_POST['nombres_usuario'],$_POST['apellidos_usuario'],$_POST['correo_usuario'],$_POST['telefono_usuario'],$_POST['pass_usuario']);
                         $this->usuarioDao->crarUsuarioDao($usuario_dto);
-                        
                         header("Location: ?c=Usuario"); 
                     }
                     else{

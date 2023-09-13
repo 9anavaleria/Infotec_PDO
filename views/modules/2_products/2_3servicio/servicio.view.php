@@ -27,11 +27,11 @@
                             </div>
                         <?php }?>
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="div col-md-8">
                 
-                <table id="tablaservivio"class="table justify-content-center col-11 ">
+                <table id="tablaservivio" class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Id</th>

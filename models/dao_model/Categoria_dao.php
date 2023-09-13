@@ -50,8 +50,7 @@
                 $sql= "DELETE FROM categoria WHERE id_categoria=?";
                 $resultado = $this->pdo->prepare($sql);
 		$resultado->execute(array($id));
-		return $resultado->rowCount();
-				
+		return $resultado->rowCount();		
  		} 
 	    catch (Exception $e) {
  		die($e->getMessage());
