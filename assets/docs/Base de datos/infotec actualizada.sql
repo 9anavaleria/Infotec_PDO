@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2023 a las 01:51:43
+-- Tiempo de generación: 13-09-2023 a las 20:57:14
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -95,7 +95,12 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`id_factura`, `id_usuarios`, `identificacion_cliente`, `placa_vehiculo`, `fecha_factura`, `total_pedido`) VALUES
-(4, '123456', '1', 1, '2022-09-26', '20000.00');
+(4, '123456', '1', 1, '2022-09-26', '20000.00'),
+(5, '123456', '1', 1, '2023-09-07', '45000.00'),
+(6, '123456', '1', 1, '2023-09-08', '145000.00'),
+(7, '123456', '2', 4, '2023-09-09', '1095006.00'),
+(8, '123456', '1', 1, '2023-09-13', '275000.00'),
+(9, '123456', '2', 4, '2023-09-09', '275000.00');
 
 -- --------------------------------------------------------
 
@@ -116,9 +121,11 @@ CREATE TABLE `lista_productos_f` (
 --
 
 INSERT INTO `lista_productos_f` (`id_listP`, `id_factura`, `id_producto`, `cantidad`, `valor_venta`) VALUES
-(1, 4, 'prod_15', 1, '0'),
-(2, 4, 'prod_11', 1, '0'),
-(3, 4, 'prod_14', 1, '0');
+(1, 4, 'prod_15', 1, '1'),
+(2, 4, 'prod_11', 2, '2'),
+(3, 4, 'prod_14', 3, '3'),
+(4, 8, 'prod_6', 6, '270000'),
+(5, 9, 'prod_6', 5, '225000');
 
 -- --------------------------------------------------------
 
@@ -139,8 +146,16 @@ CREATE TABLE `lista_servicios_f` (
 --
 
 INSERT INTO `lista_servicios_f` (`id_listS`, `id_factura`, `id_servicios`, `cantidad`, `valor_venta`) VALUES
-(1, 4, 'Serv_1', 0, '0'),
-(2, 4, 'Serv_10', 0, '0');
+(1, 4, 'Serv_1', 1, '1'),
+(2, 4, 'Serv_10', 2, '2'),
+(3, 4, 'Serv_2', 3, '3'),
+(5, 4, 'Serv_10', 2, '5000'),
+(6, 4, 'Serv_2', 2, '50001'),
+(7, 4, 'Serv_10', 2, '10000'),
+(8, 7, 'Serv_2', 6, '300006'),
+(9, 7, 'Serv_8', 4, '152000'),
+(10, 8, 'Serv_10', 1, '5000'),
+(11, 9, 'Serv_1', 1, '50000');
 
 -- --------------------------------------------------------
 
@@ -270,7 +285,11 @@ CREATE TABLE `vehiculos` (
 
 INSERT INTO `vehiculos` (`id_vehiculo`, `id_cliente`, `placa_vehiculo`) VALUES
 (1, '1', 'OCX146'),
-(2, '3', 'VCX148');
+(2, '3', 'VCX148'),
+(3, '1', 'VCX149'),
+(4, '2', 'asd456'),
+(5, '2', 'aqw456'),
+(6, '3', 'wee456');
 
 --
 -- Índices para tablas volcadas
@@ -363,19 +382,19 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_productos_f`
 --
 ALTER TABLE `lista_productos_f`
-  MODIFY `id_listP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_listP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_servicios_f`
 --
 ALTER TABLE `lista_servicios_f`
-  MODIFY `id_listS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_listS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -387,7 +406,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
