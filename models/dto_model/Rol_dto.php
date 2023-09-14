@@ -4,8 +4,7 @@
         private $codigoRol;
         private $nombreRol;
         // Constructor
-        public function __construct($codigoRol,$nombreRol){
-			$this->codigoRol = $codigoRol;
+        public function __construct($nombreRol){
 			$this->nombreRol = $nombreRol;
 		}
         /* MÉTODOS DE ACCESO: SETTER Y GETTERS*/
