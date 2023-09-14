@@ -16,6 +16,7 @@ class DataBase{
             $this->option= array(
                 PDO::MYSQL_ATTR_SSL_CA => 'assets\DigiCertGlobalRootCA.crt.pem'
             );
+            
         }
         function connection(){
             try{
