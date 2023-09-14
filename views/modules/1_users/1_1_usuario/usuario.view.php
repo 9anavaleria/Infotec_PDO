@@ -5,7 +5,7 @@
     <hr>
         <div class="row tablas">
             <div class="col-md-3">
-                <form method="post" action="?c=Usuario" class="row g-3 needs-validation" novalidate>
+                <form method="post" action="?c=Usuario" class="row g-3 needs-validation" id="usuario" novalidate>
                     <select class="form-control mb-3" name="id_rol" placeholder="Rol" >
                     <option selected>Elija el rol</option>
                     <?php foreach($verRol as $vrol){
@@ -15,12 +15,18 @@
                         }
                         ?>
                     </select>
-                    <input type="int" class="form-control mb-3 numero" name="id_usuario" placeholder="# Identificación">
-                    <input type="text" class="form-control mb-3 texto" name="nombres_usuario" placeholder="Nombres">
-                    <input type="text" class="form-control mb-3 texto" name="apellidos_usuario" placeholder="Apellidos">
-                    <input type="text" class="form-control mb-3 email" name="correo_usuario" placeholder="Correo">
-                    <input type="text" class="form-control mb-3 numero" name="telefono_usuario" placeholder="Telefono">
-                    <input type="password" class="form-control mb-3 password" name="pass_usuario" placeholder="Contraseña">
+                    <input type="int" class="form-control mb-3 numero" id="id_usuario" name="id_usuario" placeholder="# Identificación">
+                    <span id="errorId_usuario" style="color: red;"></span>
+                    <input type="text" class="form-control mb-3 texto" id="nombres_usuario" name="nombres_usuario" placeholder="Nombres">
+                    <span id="errornombres_usuario" style="color: red;"></span>
+                    <input type="text" class="form-control mb-3 texto" id="apellido_usuario" name="apellidos_usuario" placeholder="Apellidos">
+                    <span id="errorapellido_usuario" style="color: red;"></span>
+                    <input type="text" class="form-control mb-3 email" id="correo_usuario" name="correo_usuario" placeholder="Correo">
+                    <span id="errorcorreo" style="color: red;"></span>
+                    <input type="text" class="form-control mb-3 numero" id="telefono_usuario" name="telefono_usuario" placeholder="Telefono">
+                    <span id="errortelefono" style="color: red;"></span>
+                    <input type="password" class="form-control mb-3 password" id="pass_usuario" name="pass_usuario" placeholder="Contraseña">
+                    <span id="errorpass" style="color: red;"></span>
                     <input type="int" class="form-control mb-3 numero" name="estado_usuario" placeholder="Estado">
                     <div class="container">
                         <?php if(!empty($alerta)){ ?>
@@ -106,4 +112,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#usuario").submit(function(event) {
+                var idUsuario = $("#id_usuario").val();
+                var soloNumeros = /^[0-9]+$/.test(idUsuario);
+
+                if (!soloNumeros) {
+                    $("#errorId_usuario").html("La identificación debe contener solo números.");
+                    event.preventDefault();
+                } else {
+                    $("#errorId_usuario").html("");
+                }
+                var nombre = $("#nombres_usuario").val();
+                var soloTexton= /^[A-Za-z]+$/.test(nombre);
+                
+                if (!soloTexton) {
+                    $("#errornombres_usuario").html("El nombre debe contener solo letras.");
+                    event.preventDefault();
+                    
+                } else {
+                    $("#errornombres_usuario").html("");
+                }
+                var apellido = $("#apellido_usuario").val();
+                var soloTextoa= /^[A-Za-z]+$/.test(apellido);
+                if (!soloTextoa) {
+                    $("#errorapellido_usuario").html("El apellido debe contener solo letras.");
+                    event.preventDefault();
+                    
+                } else {
+                    $("#errorapellido_usuario").html("");
+                }
+                var correo = $("#correo_usuario").val();
+                var soloCorreo= /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+                if (!soloCorreo) {
+                    $("#errorcorreo").html("Ingrese un correo valido.");
+                    event.preventDefault();
+                    
+                } else {
+                    $("#errorcorreo").html("");
+                }
+                var telefono = $("#telefono_usuario").val();
+                var solotelefono = /^3\d{9}$/.test(telefono);
+                if (!solotelefono) {
+                    $("#errortelefono").html("Ingrese un telefono valido.");
+                    event.preventDefault();
+                    
+                } else {
+                    $("#errortelefono").html("");
+                }
+                var pass = $("#pass_usuario").val();
+                var solopass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(pass);
+                if (!solopass) {
+                    $("#errorpass").html("Escriba una contraseña con al menos 8 caracteres, que incluye al menos una letra mayúscula, una letra minúscula y un número.");
+                    event.preventDefault();
+                    
+                } else {
+                    $("#errorpass").html("");
+                }
+                
+            });
+            
+        });
+    </script>
 </body>
