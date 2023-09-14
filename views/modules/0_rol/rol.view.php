@@ -7,9 +7,10 @@
    
         <div class="row tablas">
             <div class="col-md-4">
-                <form method="post" action="?c=Roles" class="row g-3 needs-validation" novalidate>
-                    <input type="int" class="form-control mb-3" name="id_rol" placeholder="Codigo Rol" >
-                    <input type="text" class="form-control" id="validationCustom02" value="" required name="nombre_rol" placeholder="Nombre rol" pattern="[A-Za-z\s]+" required title="Ingresa solo letras">
+                <form method="post" id="rol"action="?c=Roles" class="row g-3 needs-validation" novalidate>
+                    
+                    <input type="text" class="form-control" id="nombreRol" value="" required name="nombre_rol" placeholder="Nombre rol" pattern="[A-Za-z\s]+" required title="Ingresa solo letras">
+                    <span id="errorNombre" style="color: red;"></span>
                     <div class="container">
                         <?php if(!empty($alerta)){ ?>
                             <div class="">
@@ -86,4 +87,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#rol").submit(function(event) {
+                var nombre = $("#nombreRol").val();
+                var soloTexto = /^[A-Za-z]+$/.test(nombre);
+
+                if (!soloTexto) {
+                    $("#errorNombre").html("El nombre debe contener solo letras.");
+                    event.preventDefault();
+                } else {
+                    $("#errorNombre").html("");
+                }
+            });
+        });
+    </script>
 </body>
