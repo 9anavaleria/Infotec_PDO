@@ -1,4 +1,4 @@
- <?php 
+<?php 
 	class Rol_dao{
 		private $pdo;
 		public function __construct(){
@@ -18,18 +18,15 @@
 		}
 		public function consultarRolDao($codigoRol){
 			$sql = "SELECT * FROM ROLES where id_rol='$codigoRol'";
-			
 			$resultado = $this->pdo->query($sql);
-			
 			$consulta = $resultado->fetchAll();
-			
 			return $consulta;
 		}
 		public function createRolDao($rol_dto){
 			try {
-				$sql = "INSERT INTO roles (`id_rol`, `nombre_rol`) VALUES (?,?)";
+				$sql = "INSERT INTO roles ( `nombre_rol`) VALUES (?)";
 				$resultado = $this->pdo->prepare($sql);
-				$resultado->execute(array($rol_dto->getCodigoRol(),$rol_dto->getNombreRol()));
+				$resultado->execute(array($rol_dto->getNombreRol()));
 				return $resultado->rowCount();
 			} catch (Exception $e) {
 				die("....".$e->getMessage());	
@@ -40,9 +37,7 @@
 				$sql = "UPDATE roles set nombre_rol=? where id_rol=?";
 				$resultado = $this->pdo->prepare($sql);
 				$resultado->execute(array($rol_dto->getNombreRol(),$rol_dto->getCodigoRol()));
-				
 				return $resultado->rowCount();
-				
 			} catch (Exception $e) {
 				die("....".$e->getMessage());	
 			}
