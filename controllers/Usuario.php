@@ -43,6 +43,7 @@
             public function modificar_usuario(){
                 $usuario_dto = new Usuario_dto ($_POST['id_rol'],$_POST['id_usuario'],$_POST['nombres_usuario'],$_POST['apellidos_usuario'],$_POST['correo_usuario'],$_POST['telefono_usuario'],$_POST['pass_usuario']);
                 $this->usuarioDao->modificarUsuarioDao($usuario_dto);
+                
                 header("Location: ?c=Usuario"); 
             }
             public function eliminar_usuario(){

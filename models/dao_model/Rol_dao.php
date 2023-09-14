@@ -37,6 +37,7 @@
 				$sql = "UPDATE roles set nombre_rol=? where id_rol=?";
 				$resultado = $this->pdo->prepare($sql);
 				$resultado->execute(array($rol_dto->getNombreRol(),$rol_dto->getCodigoRol()));
+				
 				return $resultado->rowCount();
 			} catch (Exception $e) {
 				die("....".$e->getMessage());	

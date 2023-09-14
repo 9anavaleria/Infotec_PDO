@@ -11,12 +11,12 @@
             $vercliente = $this->clienteDao->verClienteDao();
             if ($_SERVER ['REQUEST_METHOD'] == 'GET' && isset ($_GET['id_cliente'])){
                 $result =$this->clienteDao->consultarClienteDao($_GET['id_cliente']);
-                $cliente_dto=new Cliente_dto($result[0],$result[1],$result[2],$result[3],$result[4],$result[5]);
+                $cliente_dto=new Cliente_dto($result[0],$result[1],$result[2],$result[3],$result[4]);
                 $cliente_dto->setIdCliente($result[0]);
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){        
-                if (!empty($_POST['id_cliente']) && !empty($_POST['identificacion_cliente']) && !empty($_POST['nombre_cliente']) && !empty($_POST['apellido_cliente']) && !empty($_POST['telefono_cliente']) && !empty($_POST['correo_cliente'])){
-                    $cliente_dto = new Cliente_dto($_POST['id_cliente'],$_POST['identificacion_cliente'],$_POST['nombre_cliente'],$_POST['apellido_cliente'],$_POST['telefono_cliente'],$_POST['correo_cliente']);
+                if (!empty($_POST['identificacion_cliente']) && !empty($_POST['nombre_cliente']) && !empty($_POST['apellido_cliente']) && !empty($_POST['telefono_cliente']) && !empty($_POST['correo_cliente'])){
+                    $cliente_dto = new Cliente_dto($_POST['identificacion_cliente'],$_POST['nombre_cliente'],$_POST['apellido_cliente'],$_POST['telefono_cliente'],$_POST['correo_cliente']);
                     $this->clienteDao->crearClienteDao($cliente_dto);
                     
                     header("Location: ?c=Cliente");

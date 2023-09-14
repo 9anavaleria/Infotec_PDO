@@ -7,8 +7,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE DATE BASE infotec;
-USE ;
+USE infotec ;
 
 -- -----------------------------------------------------
 -- Table ROLES
@@ -25,7 +24,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS USUARIOS (
   id_rol INT NOT NULL,
-  id_usuario VARCHAR(10) NOT NULL,
+  id_usuario INT NOT NULL AUTO_INCREMENT,
   nombres_usuario VARCHAR(50) NOT NULL,
   apellidos_usuario VARCHAR(50) NOT NULL,
   correo_usuario VARCHAR(100) NOT NULL,
@@ -46,7 +45,7 @@ ENGINE = InnoDB;
 -- Table CLIENTES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS CLIENTES (
-  id_cliente VARCHAR(10) NOT NULL,
+  id_cliente INT NOT NULL AUTO_INCREMENT,
   identificacion_cliente VARCHAR(10) NOT NULL,
   nombre_cliente VARCHAR(45) NULL,
   apellido_cliente VARCHAR(45) NULL,
@@ -73,12 +72,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS VEHICULOS (
   id_vehiculo INT NOT NULL AUTO_INCREMENT,
-  id_cliente VARCHAR(10) NOT NULL,
+  id_cliente INT NOT NULL,
   placa_vehiculo VARCHAR(6) NOT NULL,
   PRIMARY KEY (id_vehiculo),
-  UNIQUE INDEX placa_vehiculo_UNIQUE (id_vehiculo ASC) ,
+  UNIQUE INDEX placa_vehiculo1_UNIQUE (id_vehiculo ASC) ,
   INDEX ind_vehiculos_clientes (id_cliente ASC) ,
-  UNIQUE INDEX placa_vehiculo_UNIQUE (placa_vehiculo ASC) ,
+  UNIQUE INDEX placa_vehiculo2_UNIQUE (placa_vehiculo ASC) ,
   CONSTRAINT fk_vehiculo_cliente
     FOREIGN KEY (id_cliente)
     REFERENCES CLIENTES (id_cliente)
@@ -121,7 +120,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FACTURA (
   id_factura INT NOT NULL AUTO_INCREMENT,
-  id_usuarios VARCHAR(10) NOT NULL,
+  id_usuarios INT NOT NULL,
   identificacion_cliente VARCHAR(10) NOT NULL,
   placa_vehiculo INT NOT NULL,
   fecha_factura DATE NOT NULL,

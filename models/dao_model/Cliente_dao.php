@@ -25,9 +25,9 @@ class Cliente_dao{
         }
         public function crearClienteDao($cliente_dto){
             try{
-                $sql = "INSERT INTO clientes (`id_cliente`, `identificacion_cliente`, `nombre_cliente`, `apellido_cliente`, `telefono_cliente`, `correo_cliente`) VALUE (?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO clientes (`identificacion_cliente`, `nombre_cliente`, `apellido_cliente`, `telefono_cliente`, `correo_cliente`) VALUE (?, ?, ?, ?, ?)";
                 $resultado = $this->pdo->prepare($sql);                
-                $resultado->execute(array($cliente_dto->getIdCliente(), $cliente_dto->getIdentificacionCliente(), $cliente_dto-> getNombreCliente(), $cliente_dto-> getApellidoCliente(), $cliente_dto-> getTelefonoCliente(), $cliente_dto-> getCorreoCliente()));
+                $resultado->execute(array( $cliente_dto->getIdentificacionCliente(), $cliente_dto-> getNombreCliente(), $cliente_dto-> getApellidoCliente(), $cliente_dto-> getTelefonoCliente(), $cliente_dto-> getCorreoCliente()));
                 return $resultado->rowCount();
             }
             catch (Exception $e) {

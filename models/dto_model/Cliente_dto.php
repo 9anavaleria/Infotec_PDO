@@ -7,8 +7,7 @@
         private $apellidoCliente;
         private $telefonoCliente;
         private $correoCliente;
-        public function __construct($idCliente, $identificacionCliente,$nombreCliente,  $apellidoCliente,$telefonoCliente,     $correoCliente){
-            $this->idCliente= $idCliente;
+        public function __construct($identificacionCliente,$nombreCliente,  $apellidoCliente,$telefonoCliente,     $correoCliente){
             $this->identificacionCliente= $identificacionCliente;
             $this->nombreCliente= $nombreCliente;
             $this->apellidoCliente= $apellidoCliente;
@@ -16,32 +15,28 @@
             $this->correoCliente= $correoCliente;
         
         }
-         /* MÉTODOS DE ACCESO: SETTER Y GETTERS*/
+        /* MÉTODOS DE ACCESO: SETTER Y GETTERS*/
          // Id Cliente
-         public function setIdCliente($idCliente){
+        public function setIdCliente($idCliente){
             $this->idCliente= $idCliente;
-         }
-         public function getIdCliente(){
+        }
+        public function getIdCliente(){
             return $this->idCliente;
-         }
-        
-         // Identificación Cliente
-         public function setIdentificacionCliente($identificacionCliente){
+        }
+                // Identificación Cliente
+        public function setIdentificacionCliente($identificacionCliente){
             $this->identificacionCliente= $identificacionCliente;
-         }
-         public function getIdentificacionCliente(){
+        }
+        public function getIdentificacionCliente(){
             return $this->identificacionCliente;
-         }
-
-         //Nombre Cliente
-        
-         public function setNombreCliente($nombreCliente){
+        }
+        //Nombre Cliente
+                public function setNombreCliente($nombreCliente){
             $this->nombreCliente= $nombreCliente;
-
-         }
-         public function getNombreCliente(){
+        }
+        public function getNombreCliente(){
             return $this->nombreCliente;
-         }
+        }
         //Apellido cliente
         public function setApellidoCliente($apellidoCliente){
             $this->apellidoCliente= $apellidoCliente;

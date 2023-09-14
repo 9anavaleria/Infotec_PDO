@@ -1,5 +1,6 @@
 <?php
     class Categoria_dao{
+        private $pdo;
         public function __construct(){
 			try {
 				$db = new DataBase();
@@ -23,9 +24,9 @@
         }
         public function crearCategoriaDao($categoria_dto){
             try{     
-                $sql = "INSERT INTO categoria (`id_categoria`,`nombre_categoria`) VALUE (?,?)";
+                $sql = "INSERT INTO categoria (`nombre_categoria`) VALUE (?)";
                 $resultado = $this->pdo->prepare($sql);
-                $resultado->execute(array($categoria_dto->getIdCategoria(),$categoria_dto->getNombreCategoria()));
+                $resultado->execute(array($categoria_dto->getNombreCategoria()));
                 return $resultado->rowCount();
             }
             catch (Exception $e) {
@@ -37,6 +38,8 @@
                 $sql = "UPDATE categoria SET nombre_categoria=? where id_categoria=?";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($categoria_dto->getNombreCategoria(),$categoria_dto->getIdCategoria()));
+                print_r($categoria_dto->getIdCategoria());
+                exit;
                 return $resultado->rowCount();
             } 
             catch (Exception $e) {

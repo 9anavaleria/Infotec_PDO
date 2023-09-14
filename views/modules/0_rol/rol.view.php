@@ -101,5 +101,11 @@
                 }
             });
         });
+        document.getElementById("rol").addEventListener("submit", function(event) {
+        var respuesta = confirm("¿Está seguro de que desea crear el Rol?");
+        if (!respuesta) {
+            event.preventDefault(); 
+        }
+        });
     </script>
 </body>

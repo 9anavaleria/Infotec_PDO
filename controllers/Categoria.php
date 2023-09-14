@@ -13,12 +13,12 @@
             $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_categoria'])) {
                 $result =$this->categoriaDao->consultarCategoriaDao($_GET['id_categoria']); 
-                $categoria_dto=new Categoria_dto($result[0],$result[1]);   
+                $categoria_dto=new Categoria_dto($result[0]);   
                 $categoria_dto->setIdCategoria($result[0])   ;        
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                if (!empty($_POST['id_categoria'])&&!empty($_POST['nombre_categoria'])){
-                    $categoria_dto=new Categoria_dto($_POST['id_categoria'],$_POST['nombre_categoria']);
+                if (!empty($_POST['nombre_categoria'])){
+                    $categoria_dto=new Categoria_dto($_POST['nombre_categoria']);
                     $this->categoriaDao->crearCategoriaDao($categoria_dto);               
                     header("Location: ?c=Categoria");
                 }
@@ -37,9 +37,11 @@
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_categoria(){
-           $categoria_dto = new Categoria_dto ($_POST['id_categoria'],$_POST['nombre_categoria']);
-           $this->categoriaDao->modificarCategoriaDao($categoria_dto);               
-           header("Location: ?c=Categoria");   
+            $categoria_dto = new Categoria_dto ($_POST['nombre_categoria'],$_POST['id_categoria']);
+            $this->categoriaDao->modificarCategoriaDao($categoria_dto);   
+            print_r($categoria_dto);
+            exit;            
+            header("Location: ?c=Categoria");   
         }
         public function eliminar_categoria(){
             $this->categoriaDao->eliminarCatergoriaDao($_GET['id_categoria']); 

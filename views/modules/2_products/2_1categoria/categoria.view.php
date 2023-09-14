@@ -5,11 +5,11 @@
     <hr>
         <div class="row tablas">
            
-            <div class="col-md-4">
+            <div class="col-md-3">
                 
-                <form method="post" action="?c=Categoria" class="row g-3 needs-validation" novalidate>
-                    <input type="int" class="form-control mb-3" name="id_categoria" placeholder="Codigo Categoria">
-                    <input type="text" class="form-control" id="validationCustom02" value="" required name="nombre_categoria" placeholder="Nombre Categoria">
+                <form method="post" action="?c=Categoria" class="row g-3 needs-validation" id="categoria" novalidate>
+                    <input type="text" class="form-control" id="nombre" value="" required name="nombre_categoria" placeholder="Nombre Categoria">
+                    <span id="errorNombre" style="color: red;"></span>
                     <input type="submit" class="btn btn-enviar mt-2 ">
                 </form>
                 <div class="centarboton">
@@ -36,13 +36,13 @@
                                      
                 </div>
             </div>
-            <div class="div col-md-8">
+            <div class="div col-md-9">
                 
                 <table id="tablacategoria" class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Id</th>
-                            <th scope="col">Rol</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col">Modificar</th>
                             <th scope="col">Eliminar</th>
                         </tr>
@@ -95,9 +95,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-    <script> 
-    
-1
-let table = new DataTable('#myTable');
-</script>
+    <script>
+        $(document).ready(function() {
+            $("#categoria").submit(function(event) {
+                var nombre = $("#nombre").val();
+                var soloTexto = /^[A-Za-z]+$/.test(nombre);
+
+                if (!soloTexto) {
+                    $("#errorNombre").html("El nombre debe contener solo letras.");
+                    event.preventDefault();
+                } else {
+                    $("#errorNombre").html("");
+                }
+            });
+        });
+        document.getElementById("categoria").addEventListener("submit", function(event) {
+        var respuesta = confirm("¿Estás seguro de que deseas enviar el formulario?");
+        if (!respuesta) {
+            event.preventDefault(); 
+        }
+        });
+    </script>
 </body>
