@@ -8,13 +8,13 @@ class DataBase{
         private $option;
 
         public function __construct(){
-            $this->host="dbappinfotec.mysql.database.azure.com";
+            $this->host="appinfotec.mysql.database.azure.com";
             $this->port="3306";
-			$this->user="Admin_Infotec";
+			$this->user="admin_infotec";
 			$this->pass="Infotec123";
 			$this->db="infotec";
             $this->option= array(
-                PDO::MYSQL_ATTR_SSL_CA => 'assets\DigiCertGlobalRootCA.crt.pem'
+                PDO::MYSQL_ATTR_SSL_CA => 'assets\docs\DigiCertGlobalRootCA.crt.pem'
             );
             
         }
