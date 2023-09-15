@@ -78,5 +78,10 @@
         public function busquedaVehiculo(){
             echo json_encode($this->vehiculoDao->verVehiculoDao());
         }
+        public function imprimirFactura(){
+            $factura =$this->facturaDao->consultarFacturaId($_GET['id_factura']);
+            require_once "views/modules/3_buy/factura.print.php";
+
+        }
     }
 ?>

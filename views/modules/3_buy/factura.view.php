@@ -41,7 +41,7 @@
                                 <?php echo $prov['cantidad']?>
                             </td>
                             <td class="text-center"> 
-                                <?php echo $prov['valor_venta']?>
+                                $<?php echo $prov['valor_venta']?>
                             </td>
                             </tr>
                             <?php
@@ -54,7 +54,7 @@
                             </td>
                             
                             <td class="text-center"> 
-                                <?php echo $prov['total_pedido']?>
+                                $<?php echo intval($info['total_pedido'])?>
                             </td>
                                 
                         </tr>

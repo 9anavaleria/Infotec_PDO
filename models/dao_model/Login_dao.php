@@ -15,10 +15,10 @@
 			$resultado = $this->pdo->prepare($sql);
 			$usuario = $login_dto->getUsuario();
 			$getPass = $login_dto->getPass();
-			
+			//falta encriptar
 
 			$resultado->bindValue(':usuario',$usuario);
-			$resultado->bindValue(':pass',$getPass);
+			$resultado->bindValue(':pass',sha1($getPass));
 			$resultado->execute();
 			
 			$userDb = $resultado->fetch();

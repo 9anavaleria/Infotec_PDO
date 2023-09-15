@@ -37,6 +37,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Precio</th>
+                            //if 
                             <th scope="col">Modificar</th>
                             <th scope="col">Eliminar</th>
                         </tr>

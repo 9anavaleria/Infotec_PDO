@@ -38,8 +38,8 @@
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_cliente(){
-            $cliente_dto = new Cliente_dto($_POST
-            ['id_cliente'],$_POST['identificacion_cliente'],$_POST['nombre_cliente'],$_POST['apellido_cliente'],$_POST['telefono_cliente'],$_POST['correo_cliente']);
+            $cliente_dto = new Cliente_dto($_POST['identificacion_cliente'],$_POST['nombre_cliente'],$_POST['apellido_cliente'],$_POST['telefono_cliente'],$_POST['correo_cliente']);
+            $cliente_dto->setIdCliente($_POST['id_cliente']);
             $this->clienteDao->modificarClienteDao($cliente_dto);
             header("Location: ?c=Cliente");
         }

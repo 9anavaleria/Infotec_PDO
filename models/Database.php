@@ -1,5 +1,5 @@
 <?php
-class DataBase{
+/* class DataBase{
         private $host;
         private $user;
         private $db;
@@ -30,8 +30,8 @@ class DataBase{
             return $pdo;   
 			
         }
-    } 
-   /* class DataBase{
+    } */
+   class DataBase{
         private $host;
         private $user;
         private $db;
@@ -56,6 +56,6 @@ class DataBase{
             return $pdo;   
 			
         }
-    } */
+    } 
 
 ?>
