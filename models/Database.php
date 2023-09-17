@@ -1,5 +1,5 @@
 <?php
-/* class DataBase{
+class DataBase{
         private $host;
         private $user;
         private $db;
@@ -8,13 +8,13 @@
         private $option;
 
         public function __construct(){
-            $this->host="appinfotec.mysql.database.azure.com";
+            $this->host="dbinfotec.mysql.database.azure.com";
             $this->port="3306";
-			$this->user="admin_infotec";
-			$this->pass="Infotec123";
+			$this->user="admin_1";
+			$this->pass="Infotec123*";
 			$this->db="infotec";
             $this->option= array(
-                PDO::MYSQL_ATTR_SSL_CA => 'assets\docs\DigiCertGlobalRootCA.crt.pem'
+                PDO::MYSQL_ATTR_SSL_CA => 'assets\docs\Base de datos\Certificado_SSL\DigiCertGlobalRootCA.crt.pem'
             );
             
         }
@@ -30,8 +30,8 @@
             return $pdo;   
 			
         }
-    } */
-   class DataBase{
+    }
+   /* class DataBase{
         private $host;
         private $user;
         private $db;
@@ -56,6 +56,6 @@
             return $pdo;   
 			
         }
-    } 
+   } */  
 
 ?>
