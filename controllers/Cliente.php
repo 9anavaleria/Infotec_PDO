@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "models/dto_model/Cliente_dto.php";
     require_once "models/dao_model/Cliente_dao.php";
 

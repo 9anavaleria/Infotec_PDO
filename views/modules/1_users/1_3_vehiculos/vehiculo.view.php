@@ -52,8 +52,10 @@
                             <th scope="col">Id</th>
                             <th scope="col">Cliente</th>
                             <th scope="col">Vehiculo</th>
+                            <?php if ($_SESSION['rol'] == 1 ){?>
                             <th scope="col">Modificar</th>
                             <th scope="col">Eliminar</th>
+                            <?php }?>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,9 +73,11 @@
                             <td class="text-center"> 
                                 <?php echo $vehiculo['placa_vehiculo']?>
                             </td>
+                            <?php if ($_SESSION['rol'] == 1 ){?>
                             <td class="text-center"><a class="btn btn-warning" href="?c=Vehiculo&a=editar_vehiculo& id_vehiculo=<?php echo $vehiculo['id_vehiculo']?>"><i class="bi bi-pencil-square"></i></a></td>
                             <td  class="text-center"><a class="btn btn-danger" href="?c=Vehiculo&a=eliminar_vehiculo& id_vehiculo=<?php echo $vehiculo['id_vehiculo']?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
+                            <?php }?>
                         <?php
                         }
                          ?>

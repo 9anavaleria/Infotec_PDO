@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "models/dto_model/Producto_dto.php";
     require_once "models/dao_model/Producto_dao.php";
     require_once "models/dto_model/Categoria_dto.php";
@@ -18,13 +19,13 @@
             $alerta = '';
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_categoria'])){
                 $result =$this->productoDao->consultarProductoDao($_GET['id_categoria']);
-                $Producto_dto=new Producto_dto($result[0],$result[1],$result[2],$result[3],$result[4]);
+                $Producto_dto=new Producto_dto($result[0],$result[1],$result[2],$result[3]);
                 $Producto_dto->setIdCategoria($result[0]);
             }
             elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                if(!empty($_POST['id_categoria']) && !empty($_POST['id_producto']) && !empty($_POST['nombre_producto']) && !empty($_POST['precio_producto']) && !empty($_POST['exist_producto'])){
+                if(!empty($_POST['id_categoria'])  && !empty($_POST['nombre_producto']) && !empty($_POST['precio_producto']) && !empty($_POST['exist_producto'])){
                     // Capturar datos
-                    $producto_dto=new Producto_dto($_POST['id_categoria'],$_POST['id_producto'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
+                    $producto_dto=new Producto_dto($_POST['id_categoria'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
                     $producto_dto->getIdProducto();
                     $this->productoDao->crearProductoDao($producto_dto);
                     header("Loaction: ?c=Producto");
@@ -48,7 +49,7 @@
             require_once "views/roles/admin/footer.php";
         }
         public function modificar_producto(){
-            $producto_dto = new Producto_dto ($_POST['id_categoria'],$_POST['id_producto'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
+            $producto_dto = new Producto_dto ($_POST['id_categoria'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
             
             $this->productoDao->modificarProductoDao($producto_dto);
             header("Loaction: ?c=Producto");

@@ -32,6 +32,7 @@
                         </div>
                     </div>
                 </div>
+                <?php if ($_SESSION['rol'] == 1 ){?>                          
                 <div class="row ">
                     <div class="col-12">
                         <div class="collapse multi-collapse col-12  colum" id="tarjetaPersona">
@@ -52,6 +53,7 @@
                                     </a>
                                 </div>
                             </div>
+                            <?php }?>
                             <div class="col-xl-12 col-md-6 mb-4">
                                 <div class="card border-left secundario shadow h-100 py-2">
                                     <a class="card-body" href="?c=Cliente">
@@ -106,6 +108,7 @@
                                     </div>
                                 </div>
                 </div>
+                <?php if ($_SESSION['rol'] == 1 ){?>                          
                 <div class="row ">
                     <div class="col-12">
                         <div class="collapse multi-collapse col-12 colum" id="tarjetaProducto">
@@ -126,6 +129,8 @@
                                 </a>
                             </div>
                         </div>
+                        <?php }?>
+
                         <div class="col-xl-12 col-md-6 mb-4">
                             <div class="card border-left secundario shadow h-100 py-2">
                                 <a class="card-body" href="?c=Producto">

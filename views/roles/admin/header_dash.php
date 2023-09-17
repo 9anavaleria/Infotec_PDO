@@ -25,13 +25,13 @@
 				 
 				  <a class="btn barra_nav_items" href="#"><i class="bi bi-headset "></i></i>Contáctenos</a>
 				  <a class="btn dropdown-toggle barra_nav_items" type="button" data-toggle="dropdown" aria-expanded="false">
-					<i class="bi bi-person-circle"></i>Administrador
+					<i class="bi bi-person-circle"></i><?php print($_SESSION['session'] ) ?>
 				  </a>
 				  <div class="dropdown-menu dropdown-menu-right">
 					<a class="dropdown-item" href="#">Perfil</a>
 					<a class="dropdown-item" href="?c=Usuario">Configuracion Usuarios</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item text-danger" href="?c=Login">Cerrar Sesión</a>
+					<a class="dropdown-item text-danger" href="?c=Logout">Cerrar Sesión</a>
 				  </div>
 				</div>
 		</nav>
@@ -47,6 +47,7 @@
 						<h4 class="text-center">Inicio</h4>
 					</div>
 					</a>
+					<?php if ($_SESSION['rol'] == 1 ){?>
 				<a href="?c=Roles">
 					<div class="option">
 					<i class="fas fa-clipboard-user " title="Roles"></i>
@@ -60,6 +61,7 @@
 					<h4>Usuarios</h4>
 					</div>
 				</a>
+				<?php }?>
 				</a>
 				<a href="?c=Cliente">
 					<div class="option">
@@ -74,13 +76,13 @@
 					<h4>Vehiculos</h4>
 					</div>
 				</a>
-				<a href="?c=Productos">
+				<a href="?c=Producto">
 					<div class="option">
 						<i class= "bi bi-archive-fill " title="Productos"></i>
 						<h4>Productos</h4>
 					</div>
 				</a>
-				<a href="?c=Servicios">
+				<a href="?c=Servicio">
 					<div class="option">
 						<i class="bi bi-tools" title="Inventario"></i>
 					<h4>Servicios</h4>
@@ -98,6 +100,7 @@
 					<h4>Reportes</h4>
 				</div>
 				</a>
+                <div><input type="text" class="form-control" name="session_rol" id="session_rol" value=<?php echo $_SESSION['rol']?> readonly hidden></div>
 
 			</div>
 

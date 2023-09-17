@@ -10,7 +10,30 @@
 				die($e->getMessage());
 			}
 		}	
-		
+		public function login($usuario, $pass){
+			$sql = "SELECT * FROM usuarios WHERE id_usuario=:usuario AND pass_usuario=:pass";
+			
+			$resultado = $this->pdo->prepare($sql);
+			$resultado->bindValue(':usuario',$usuario);
+			$resultado->bindValue(':pass',sha1($pass));
+			$resultado->execute();
+			$userDb = $resultado->fetch();
+			if ($userDb) {
+				$user = new Usuario_dto(			
+					$userDb['id_rol'],
+					$userDb['id_usuario'],
+					$userDb['nombres_usuario'],
+					$userDb['apellidos_usuario'],
+					$userDb['correo_usuario'],
+					$userDb['telefono_usuario'],
+					$userDb['pass_usuario'],
+
+				);
+				return $user;
+			} else {
+				return false;
+			}
+		}
 		public function verUsuarioDao(){
 			$sql = "SELECT  pass_usuario,u.telefono_usuario,u.correo_usuario,u.apellidos_usuario,u.nombres_usuario,u.id_usuario,r.nombre_rol FROM usuarios u inner join roles r on r.id_rol=u.id_rol;";
 			$resultado = $this->pdo->query($sql);

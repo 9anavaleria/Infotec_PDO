@@ -19,7 +19,6 @@
                         }
                          ?>
                     </select>
-                    <input type="text" class="form-control mb-3" name="id_producto" placeholder="# Producto">
                     <input type="text" class="form-control mb-3" name="nombre_producto" placeholder="Nombre Producto">
                     <input type="number" class="form-control mb-3" name="precio_producto" placeholder="Precio">
                     <input type="text" class="form-control mb-3" name="exist_producto" placeholder="Existencia Producto">
@@ -60,23 +59,25 @@
             <table id="tablaprod" class="table justify-content-center col-11 ">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col">Categoria</th>
                         <th scope="col">Id </th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Precio</th>   
                         <th scope="col">Existencias</th>
+                        <?php if ($_SESSION['rol'] == 1 ){?> 
                         <th scope="col">Modificar</th>
                         <th scope="col">Eliminar</th>
+                        <?php }?>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($verProducto as $prod) { ?>
                     <tr>
-                        <td class="text-center">
-                            <?php echo $prod['nombre_categoria']?>
-                        </td>
                         <td class="text-center"> 
                             <?php echo $prod['id_producto']?>
+                        </td>
+                        <td class="text-center">
+                            <?php echo $prod['nombre_categoria']?>
                         </td>
                         <td class="text-center">
                             <?php echo $prod['nombre_producto']?>
@@ -86,6 +87,7 @@
                         </td><td class="text-center">
                             <?php echo $prod['exist_producto']?>
                         </td>
+                        <?php if ($_SESSION['rol'] == 1 ){?> 
                         <td class="text-center">
                             <a class="btn btn-warning" href="?c=Producto&a=editar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="bi bi-pencil-square"></i>
                             </a>
@@ -93,6 +95,7 @@
                         <td class="text-center">
                             <a class="btn btn-danger" href="?c=Producto&a=eliminar_producto& id_producto=<?php echo $prod['id_producto']?>"><i class="fa fa-trash"></i></a>
                         </td>
+                        <?php }?>
                     </tr>
                         <?php
                         }

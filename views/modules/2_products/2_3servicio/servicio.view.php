@@ -37,9 +37,10 @@
                             <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Precio</th>
-                            //if 
+                            <?php if ($_SESSION['rol'] == 1 ){?> 
                             <th scope="col">Modificar</th>
                             <th scope="col">Eliminar</th>
+                            <?php }?>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +58,7 @@
                             <td class="text-center"> 
                                 <?php echo $verSer['precio_servicio']?>
                             </td>
+                            <?php if ($_SESSION['rol'] == 1 ){?> 
                             <td class="text-center">
                                 <a class="btn btn-warning" href="?c=Servicio&a=editar_servicio& id_servicios=<?php echo $verSer['id_servicios']?>">
                                     <i class="bi bi-pencil-square"></i>
@@ -67,6 +69,7 @@
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
+                            <?php }?>
                             </tr>
                         <?php
                         }

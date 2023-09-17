@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "models/dto_model/Servicio_dto.php";
     require_once "models/dao_model/Servicio_dao.php";
     class Servicio{

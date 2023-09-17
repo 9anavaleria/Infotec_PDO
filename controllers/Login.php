@@ -1,10 +1,11 @@
 <?php
-require_once "models/dto_model/Login_dto.php";
-require_once "models/dao_model/Login_dao.php";
+session_start();
+require_once "models/dto_model/Usuario_dto.php";
+require_once "models/dao_model/Usuario_dao.php";
 class Login{
-    private $loginDao;
+    private $usuarioDao;
     public function __construct(){
-        $this->loginDao = new Login_dao;
+        $this->usuarioDao = new Usuario_dao;
     }
     public function index(){
         $alerta = "";
@@ -12,14 +13,36 @@ class Login{
             require_once "views/business/inicio.php";
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $login_dto = new Login_dto($_POST['id_usuario'], $_POST['pass_usuario']);   
-            $user = $this->loginDao->login($login_dto);         
+            $user = $this->usuarioDao->login($_POST['id_usuario'], $_POST['pass_usuario']);   
             if ($user) {
-                header("Location: ?c=Dashboard");
-            } else {                    
-                $alerta = "Usuario Incorrecto";
-                require_once "views/business/inicio.php";
-                // echo "<script>alert('Usuario Incorrecto')</script>";
+                $rol = $user->getIdRol();
+                $nombre = $user->getNombresUsuario();
+                if ($rol == 1) {
+                    $_SESSION['session'] = "Administrador";                            
+                    $_SESSION['rol'] = $rol;                            
+                    $_SESSION['nombre'] = $nombre;                            
+                    $user = serialize($user);                        
+                    $_SESSION['profile'] = $user;
+                    header("Location: ?c=Dashboard");
+                    } elseif ($rol == 2) {
+                        $_SESSION['session'] = "Vendedor";
+                        $_SESSION['rol'] = $rol;     
+                        $_SESSION['nombre'] = $nombre;     
+                    $user = serialize($user);                        
+                    $_SESSION['profile'] = $user;
+                    header("Location: ?c=Dashboard");
+                } else {                    
+                    $mensaje = "Usuario Incorrecto";
+                print_r($user);
+                exit;      
+                    if ($user) {
+                        header("Location: ?c=Dashboard");
+                    } else {                    
+                        $alerta = "Usuario Incorrecto";
+                        require_once "views/business/inicio.php";
+                        // echo "<script>alert('Usuario Incorrecto')</script>";
+                    }
+                }
             }
         }
     }

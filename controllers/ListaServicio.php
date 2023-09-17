@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "models/dto_model/ListaServicios_dto.php";
     require_once "models/dao_model/ListaServicios_dao.php";
     require_once "models/dto_model/Factura_dto.php";

@@ -8,12 +8,10 @@
         private $existProducto;        
         // Constructor
         public function __construct($idCategoria,
-        $idProducto,
         $nombreProducto,
         $precioProducto,
         $existProducto){
             $this->idCategoria = $idCategoria;
-            $this->idProducto = $idProducto;
             $this->nombreProducto = $nombreProducto;
             $this ->precioProducto = $precioProducto;
             $this -> existProducto = $existProducto;

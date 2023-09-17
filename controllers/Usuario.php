@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "models/dto_model/Usuario_dto.php";
     require_once "models/dao_model/Usuario_dao.php";
     require_once "models/dto_model/Rol_dto.php";

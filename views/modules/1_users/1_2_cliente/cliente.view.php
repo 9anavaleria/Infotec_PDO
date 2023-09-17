@@ -49,8 +49,10 @@
                     <th scope="col">Apellido</th>   
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo</th>
+                    <?php if ($_SESSION['rol'] == 1 ){?>
                     <th scope="col">Modificar</th>
                     <th scope="col">Eliminar</th>
+                    <?php }?>
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +74,8 @@
                     </td>
                     <td class="text-center"> 
                         <?php echo $cliente['correo_cliente']?>
-                    </td>                            
+                    </td>  
+                    <?php if ($_SESSION['rol'] == 1 ){?>                          
                     <td class="text-center">
                         <a class="btn btn-warning" href="?c=Cliente&a=editar_cliente& id_cliente=<?php echo $cliente['id_cliente']?>">
                             <i class="bi bi-pencil-square"></i>
@@ -83,9 +86,11 @@
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
+                    <?php }?>
                     </tr>
                 <?php } ?>
                 </tbody>
+
             </div>
         </div>
     </div>
