@@ -32,10 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <?php if ($_SESSION['rol'] == 1 ){?>                          
+                                         
                 <div class="row ">
                     <div class="col-12">
                         <div class="collapse multi-collapse col-12  colum" id="tarjetaPersona">
+                            <?php if ($_SESSION['rol'] == 1 ){?> 
                             <div class="col-xl-12 col-md-6 mb-4" id="tarjetaPersona">
                                 <div class="card border-left secundario shadow h-100 py-2">
                                     <a class="card-body" href="?c=Roles">
@@ -108,10 +109,10 @@
                                     </div>
                                 </div>
                 </div>
-                <?php if ($_SESSION['rol'] == 1 ){?>                          
                 <div class="row ">
                     <div class="col-12">
                         <div class="collapse multi-collapse col-12 colum" id="tarjetaProducto">
+                            <?php if ($_SESSION['rol'] == 1 ){?>                          
                             <div class="col-xl-12 col-md-6 mb-4" id="tarjetaProducto">
                                 <div class="card border-left secundario shadow h-100 py-2">
                                     <a class="card-body" href="?c=Categoria">

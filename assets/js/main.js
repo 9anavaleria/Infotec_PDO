@@ -88,8 +88,8 @@ new DataTable('#tablavehiculo', {
             orderData: [0, 1]
         },
         {
-            targets: [3],
-            orderData: [3, 0]
+            targets: [2],
+            orderData: [2, 0]
         }
     ]
 });

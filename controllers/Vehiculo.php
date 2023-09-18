@@ -17,13 +17,13 @@ session_start();
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id_vehiculo'])){
                 
                 $result= $this->vehiculoDao->consultarVehiculoDao($_GET['id_vehiculo']);
-                $Vehiculo_dto = new Vehiculo_dto($result[0],$result[1],$result[2]);
+                $Vehiculo_dto = new Vehiculo_dto($result[0],$result[1]);
                 $Vehiculo_dto->setIdVehiculo($result[0]);
             }
                 elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    if (!empty($_POST['id_vehiculo']) && !empty($_POST['id_cliente'])&& !empty($_POST['placa_vehiculo'])){
+                    if (!empty($_POST['id_cliente'])&& !empty($_POST['placa_vehiculo'])){
                         
-                    $Vehiculo_dto=new Vehiculo_dto($_POST['id_vehiculo'],$_POST['id_cliente'],$_POST['placa_vehiculo']);
+                    $Vehiculo_dto=new Vehiculo_dto($_POST['id_cliente'],$_POST['placa_vehiculo']);
                     
                     $this->vehiculoDao->crearVehiculoDao($Vehiculo_dto);
                     header("Location: ?c=Vehiculo"); 

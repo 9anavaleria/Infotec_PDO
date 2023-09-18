@@ -21,6 +21,7 @@ class DataBase{
         function connection(){
             try{
                 $pdo = new PDO("mysql:host=".$this->host.";dbname=".$this->db.";port=".$this->port,$this->user,$this->pass,$this->option);
+
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
             } catch(PDOException $e) {

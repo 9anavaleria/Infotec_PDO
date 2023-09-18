@@ -1,5 +1,6 @@
 <?php
 require_once "models/Database.php";
+$db = new DataBase();
 
 if (!isset($_REQUEST['c'])){
     require_once "controllers/Landing.php";

@@ -6,8 +6,7 @@ class Vehiculo_dto{
     private $placavehiculo;
     private $idclientev;
 
-    public function __construct($idvehiculo,$idclientev,$placavehiculo){
-        $this->idvehiculo = $idvehiculo;
+    public function __construct($idclientev,$placavehiculo){
 	    $this->idclientev= $idclientev;
         $this->placavehiculo = $placavehiculo;
 	}

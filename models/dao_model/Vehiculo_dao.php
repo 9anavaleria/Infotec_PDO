@@ -24,9 +24,9 @@
         }
         public function crearVehiculoDao($vehiculo_dto){
             try{
-                $sql ="INSERT INTO vehiculos(`id_vehiculo`,`id_cliente`,`placa_vehiculo`)VALUES(?,?,?)";
+                $sql ="INSERT INTO vehiculos(`id_cliente`,`placa_vehiculo`)VALUES(?,?)";
                 $resultado = $this->pdo->prepare($sql);
-                $resultado->execute(array($vehiculo_dto->getIdVehiculo(), $vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca()));
+                $resultado->execute(array($vehiculo_dto->getCliente(), $vehiculo_dto->getPlaca()));
                 return $resultado->rowCount();                
                 } 
                 catch (Exception $e) {

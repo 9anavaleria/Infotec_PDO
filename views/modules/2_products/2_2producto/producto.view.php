@@ -39,19 +39,16 @@
                         <?php }?>
                     </div>
                     <div class="tamaño">
+                    <?php if ($_SESSION['rol'] == 1 ){?>
                     <td  class="text-center">
                         <a class="btn-otro btn-secondary" href="?c=Categoria"     style="border-top-width: 6px;margin-bottom: 5px;">
                             <i class="fas bi bi-columns-gap"></i>
                     <div class= "parrafo">Crear Categoria</div>
                     </a>
                     </td>
+                    <?php }?>
                 </div> <div class="tamaño">
-                    <td  class="text-center">
-                        <a class="btn-otro btn-secondary" href="?c=Proveedor"     style="border-top-width: 6px;margin-bottom: 5px;">
-                            <i class="fas bi bi-archive-fill"></i>
-                    <div class= "parrafo">Crear Proveedor</div>
-                    </a>
-                    </td>
+                    
                 </div>  
             </div>
         </div>

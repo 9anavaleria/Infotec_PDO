@@ -90,7 +90,6 @@
                     </tr>
                 <?php } ?>
                 </tbody>
-
             </div>
         </div>
     </div>
@@ -110,57 +109,56 @@
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 <script>
-        $(document).ready(function() {
-            $("#cliente").submit(function(event) {
-                var idcliente = $("#id_cliente").val();
-                var soloNumeros = /^[0-9]+$/.test(idcliente);
-
-                if (!soloNumeros) {
-                    $("#errorId_cliente").html("La identificación debe contener solo números.");
-                    event.preventDefault();
-                } else {
-                    $("#errorId_cliente").html("");
-                }
-                var nombre = $("#nombres_cliente").val();
-                var soloTexton= /^[A-Za-z]+$/.test(nombre);
-                
-                if (!soloTexton) {
-                    $("#errornombres_cliente").html("El nombre debe contener solo letras.");
-                    event.preventDefault();
-                    
-                } else {
-                    $("#errornombres_cliente").html("");
-                }
-                var apellido = $("#apellido_cliente").val();
-                var soloTextoa= /^[A-Za-z]+$/.test(apellido);
-                if (!soloTextoa) {
-                    $("#errorapellido_cliente").html("El apellido debe contener solo letras.");
-                    event.preventDefault();
-                    
-                } else {
-                    $("#errorapellido_cliente").html("");
-                }
-                var correo = $("#correo_cliente").val();
-                var soloCorreo= /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-                if (!soloCorreo) {
-                    $("#errorcorreo").html("Ingrese un correo valido.");
-                    event.preventDefault();
-                    
-                } else {
-                    $("#errorcorreo").html("");
-                }
-                var telefono = $("#telefono_cliente").val();
-                var solotelefono = /^3\d{9}$/.test(telefono);
-                if (!solotelefono) {
-                    $("#errortelefono").html("Ingrese un telefono valido.");
-                    event.preventDefault();
-                    
-                } else {
-                    $("#errortelefono").html("");
-                }
-                
-                
-            });
-            
+    // Validación campos formulario
+    $(document).ready(function() {
+        $("#cliente").submit(function(event) {
+            var idcliente = $("#id_cliente").val();
+            var soloNumeros = /^[0-9]+$/.test(idcliente);
+            if (!soloNumeros) {
+                $("#errorId_cliente").html("La identificación debe contener solo números.");
+                event.preventDefault();
+            } else {
+                $("#errorId_cliente").html("");
+            }
+            var nombre = $("#nombres_cliente").val();
+            var soloTexton= /^[A-Za-z]+$/.test(nombre);
+            if (!soloTexton) {
+                $("#errornombres_cliente").html("El nombre debe contener solo letras.");
+                event.preventDefault();
+            } else {
+                $("#errornombres_cliente").html("");
+            }
+            var apellido = $("#apellido_cliente").val();
+            var soloTextoa= /^[A-Za-z]+$/.test(apellido);
+            if (!soloTextoa) {
+                $("#errorapellido_cliente").html("El apellido debe contener solo letras.");
+                event.preventDefault();
+            } else {
+                $("#errorapellido_cliente").html("");
+            }
+            var correo = $("#correo_cliente").val();
+            var soloCorreo= /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+            if (!soloCorreo) {
+                $("#errorcorreo").html("Ingrese un correo valido.");
+                event.preventDefault(); 
+            } else {
+                $("#errorcorreo").html("");
+            }
+            var telefono = $("#telefono_cliente").val();
+            var solotelefono = /^3\d{9}$/.test(telefono);
+            if (!solotelefono) {
+                $("#errortelefono").html("Ingrese un telefono valido.");
+                event.preventDefault(); 
+            } else {
+                $("#errortelefono").html("");
+            } 
         });
-    </script>
+    });
+    // Validación envio formulario
+    document.getElementById("cliente").addEventListener("submit", function(event) {
+    var respuesta = confirm("¿Está seguro de que desea crear el Cliente?");
+    if (!respuesta) {
+        event.preventDefault(); 
+    }
+    });
+</script>
