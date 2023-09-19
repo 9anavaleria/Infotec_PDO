@@ -28,7 +28,7 @@ session_start();
                     $producto_dto=new Producto_dto($_POST['id_categoria'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
                     $producto_dto->getIdProducto();
                     $this->productoDao->crearProductoDao($producto_dto);
-                    header("Loaction: ?c=Producto");
+                    header("Location: ?c=Producto");
                 }
                 else{
                     $alerta ='Existen campos vacios';
@@ -50,15 +50,15 @@ session_start();
         }
         public function modificar_producto(){
             $producto_dto = new Producto_dto ($_POST['id_categoria'],$_POST['nombre_producto'],$_POST['precio_producto'],$_POST['exist_producto']);
-            
+            $producto_dto->setIdProducto($_POST['id_producto']);
             $this->productoDao->modificarProductoDao($producto_dto);
-            header("Loaction: ?c=Producto");
+            header("Location:?c=Producto");
         
             
         }
         public function eliminar_producto(){
             $this->productoDao->eliminarProductoDao($_GET['id_producto']); 
-            header("Loaction: ?c=Producto");
+            header("Location: ?c=Producto");
         }
            
     }    

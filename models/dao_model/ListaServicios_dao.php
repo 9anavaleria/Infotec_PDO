@@ -16,7 +16,6 @@
                 $sql = "INSERT INTO `lista_servicios_f`(`id_factura`, `id_servicios`, `cantidad`, `valor_venta`) VALUES (?,?,?,?)";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($listaServicios_dto->getIdFac(),$listaServicios_dto->getIdServicio(),$listaServicios_dto->getCantServicio(),$listaServicios_dto->getValorServicio()));
-                return $resultado->rowCount();
             }catch (Exception $e) {
                 die("....".$e->getMessage());	
             }

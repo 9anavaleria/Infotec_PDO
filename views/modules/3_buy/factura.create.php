@@ -139,7 +139,6 @@
                     opciones += '<option value="' + item.id_servicios + '">' + item.nombre_servicio + '</option>'
                 });
                 select.html(opciones)
-                console.log(opciones)
             }
             );
         }else if (tipo == 'producto'){
@@ -172,9 +171,9 @@
             fetch('http://localhost:8081/infotec_PDO/?c=Listaproducto&a=precioProducto&id=' + idpos)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 $("#valor_" + id).val(data)
                 getTotal(id)
-                console.log(id)
             });
         }
     }

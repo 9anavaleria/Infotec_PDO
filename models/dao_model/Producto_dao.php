@@ -39,8 +39,7 @@
                 exist_producto=? WHERE id_producto=?";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($producto_dto->getIdCategoria(),$producto_dto->getNombreProducto(),$producto_dto->getPrecioProducto(),$producto_dto->getExistProducto(),$producto_dto->getIdProducto()));
-                
-                
+                                
                 return $resultado->rowCount();
             } 
             catch (Exception $e) {
@@ -61,10 +60,10 @@
             }
         }
         public function precioProductoDao($id){
-            $sql = " SELECT precio_producto FROM productos WHERE id_producto='$id'";
+            $sql = " SELECT precio_producto,exist_producto FROM productos WHERE id_producto='$id'";
             $resultado = $this->pdo->query($sql);
 			$consulta = $resultado->fetch();
-            echo $consulta[0];
+            echo json_encode($consulta);
         }
     }
 

@@ -24,6 +24,7 @@
                             <th scope="col">Vehiculo</th>
                             <th scope="col">Total</th>
                             <th scope="col">Ver</th>
+                            <th scope="col">Imprimir</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,10 +45,11 @@
                             <td class="text-center"> 
                                 <?php echo $prov['vehiculo']?>
                             </td>
-                            <td class="text-center"> 
-                                <?php echo $prov['total_pedido']?>
+                            <td class="text-left"> 
+                                $<?php echo number_format($prov['total_pedido'], 0, '.', ',') ?>
                             </td>
                             <td class="text-center"><a class="btn btn-warning" href="?c=Factura&a=ver_factura& id_factura=<?php echo $prov['id_factura']?>"><i class="bi bi-eye"></i></a></td>
+                            <td class="text-center"><a class="btn btn-info" target="_blank"href="?c=Factura&a=imprimirFactura&id_factura=<?php echo $prov['id_factura']?>"><i class="bi bi-printer"></i></a></td>
                             </tr>
                         <?php
                         }

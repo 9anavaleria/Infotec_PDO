@@ -44,7 +44,8 @@ session_start();
             require_once "views/roles/admin/footer.php";   
         }
         public function modificar_vehiculo(){
-            $vehiculo_dto = new Vehiculo_dto ($_POST['id_vehiculo'],$_POST['id_cliente'],$_POST['placa_vehiculo']);
+            $vehiculo_dto = new Vehiculo_dto ($_POST['id_cliente'],$_POST['placa_vehiculo']);
+            $vehiculo_dto->setIdVehiculo($_POST['id_vehiculo']);
             $this->vehiculoDao->modificarVehiculoDao($vehiculo_dto);
             header("Location: ?c=Vehiculo");
         }
@@ -53,9 +54,7 @@ session_start();
             $this->vehiculoDao->eliminarVehiculoDao($_GET['id_vehiculo']);
             $verCliente = $this->clienteDao->verClienteDao();
             $verVehiculo =$this->vehiculoDao->verVehiculoDao();
-            require_once "views/roles/admin/header_dash.php";
-            require_once "views/modules/1_users/1_3_vehiculos/vehiculo.view.php";
-            require_once "views/roles/admin/footer.php";
+            header("Location: ?c=Vehiculo");
         }
     }
 

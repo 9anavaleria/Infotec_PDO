@@ -7,7 +7,7 @@
                 </h1>
                 <hr>
                 <div class="div col-md-12 row">
-                    <div class="div col-md-8">
+                    <div class="div col-md-9" style="padding-left: 50px;"> 
                         <div> <label class="tituloFac ">Fecha Factura: </label><label class="col-md-6">
                                 <?php echo $info['fecha_factura'] ?>
                             </label></div>
@@ -18,8 +18,8 @@
                                 <?php echo $info['vehiculo'] ?>
                             </label></div>
                     </div>
-                    <div class="div col-md-4">
-                        <a class="btn-otro btn-secondary" href="?c=Factura&a=imprimirFactura&id_factura=<?php echo $info['id_factura'] ?>"
+                    <div class="div col-md-3 fac" style="padding-left: 10px;">
+                        <a class="btn-otro btn-secondary" href="?c=Factura&a=imprimirFactura&id_factura=<?php echo $info['id_factura'] ?>" target="_blank"
                             style="border-top-width: 6px;margin-bottom: 5px;">
                             <i class="fas bi bi-printer">
                             </i>
@@ -39,10 +39,10 @@
                 <table id="tablaproveedor" class="table justify-content-center col-11 ">
                     <thead>
                         <tr class="text-center">
-                            <th scope="col">Id producto/servicio</th>
-                            <th scope="col">Nombre producto/servicio</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Valor</th>
+                            <th scope="col-xs-1" class="text-center">Id</th>
+                            <th scope="col-xs-6" class="text-center">Producto/Servicio</th>
+                            <th scope="col-xs-2" class="text-center">Cantidad</th>
+                            <th scope="col-xs-2" class="text-center">Valor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,13 +54,13 @@
                                 <td class="text-center">
                                     <?php echo $prov['id_producto'] ?>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-left">
                                     <?php echo $prov['nombre_producto'] ?>
                                 </td>
                                 <td class="text-center">
                                     <?php echo $prov['cantidad'] ?>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-right">
                                     $
                                     <?php echo number_format($prov['valor_venta'], 0, '.', ',') ?>
                                 </td>
@@ -70,11 +70,11 @@
                         ?>
 
                         <tr>
-                            <td colspan="3" class="text-center">
-                                Total
+                            <td colspan="3" class="text-right">
+                                TOTAL
                             </td>
 
-                            <td class="text-center">
+                            <td class="text-right">
                                 $
                                 <?php echo number_format($info['total_pedido'], 0, '.', ',') ?>
                             </td>
