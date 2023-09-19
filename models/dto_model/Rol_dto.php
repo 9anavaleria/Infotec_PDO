@@ -7,7 +7,7 @@
         public function __construct($nombreRol){
 			$this->nombreRol = $nombreRol;
 		}
-        /* MÉTODOS DE ACCESO: SETTER Y GETTERS*/
+        /* MÉTODOS DE ACCESO: SETTER Y GETTERS */
         // Código Rol
         public function setCodigoRol($codigoRol){
             $this->codigoRol = $codigoRol;

@@ -3,16 +3,7 @@
         private $idServicios;
         private $nombreServicio;
         private $precioServicio;
-        public function __construct(){
-			$a = func_get_args();
-			$i = func_num_args();
-			if (method_exists($this, $f='__construct'.$i)) {
-				call_user_func_array(array($this, $f), $a);
-			}
-            
-		}
-        public function __construct3($idServicios,$nombreServicio,$precioServicio){
-            $this->idServicios=$idServicios;
+        public function __construct($nombreServicio,$precioServicio){
             $this->nombreServicio=$nombreServicio;
             $this->precioServicio=$precioServicio;
         }

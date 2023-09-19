@@ -81,6 +81,7 @@ session_start();
         }
         public function imprimirFactura(){
             $factura =$this->facturaDao->consultarFacturaId($_GET['id_factura']);
+            print($factura); exit;
             require_once "views/modules/3_buy/factura.print.php";
 
         }

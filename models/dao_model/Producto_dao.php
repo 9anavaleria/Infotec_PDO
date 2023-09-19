@@ -24,7 +24,7 @@
         }
         public function crearProductoDao($producto_dto){
             try{
-                $sql = "INSERT INTO productos (`id_categoria`,`nombre_producto`,`precio_producto`,`exist_producto`) values (?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO productos (`id_categoria`,`nombre_producto`,`precio_producto`,`exist_producto`) values (?, ?, ?, ?)";
                 $resultado = $this->pdo->prepare($sql);
                 $resultado->execute(array($producto_dto->getIdCategoria(),$producto_dto->getNombreProducto(),$producto_dto->getPrecioProducto(),$producto_dto->getExistProducto()));
             	return $resultado->rowCount();

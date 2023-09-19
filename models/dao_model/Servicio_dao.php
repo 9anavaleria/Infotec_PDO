@@ -26,9 +26,9 @@
         }
         public function crearServicioDao($servicio_dto){
             try {
-                $sql = "INSERT INTO servicios (`id_servicios`,`nombre_servicio`,`precio_servicio`) VALUES (?,?,?)";
+                $sql = "INSERT INTO servicios (`nombre_servicio`,`precio_servicio`) VALUES (?,?)";
                 $resultado = $this->pdo->prepare($sql);
-                $resultado->execute(array($servicio_dto->getIdServicio(),$servicio_dto->getNombreServicio(),$servicio_dto->getPrecioServicio()));
+                $resultado->execute(array($servicio_dto->getNombreServicio(),$servicio_dto->getPrecioServicio()));
                 return $resultado->rowCount();
             }catch (Exception $e) {
                 die("....".$e->getMessage());	
@@ -39,6 +39,7 @@
                 $sql = "UPDATE servicios SET nombre_servicio=?, precio_servicio=? WHERE id_servicios=?";
                 $resultado = $this->pdo->prepare($sql);
 				$resultado->execute(array($servicio_dto->getNombreServicio(), $servicio_dto->getPrecioServicio(),$servicio_dto->getIdServicio()));
+                
 				return $resultado->rowCount();
             }catch (Exception $e) {
 				die($e->getMessage());

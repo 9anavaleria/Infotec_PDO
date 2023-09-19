@@ -26,7 +26,7 @@ columnDefs: [
     },
     {
         targets: [4],
-        orderData: [, 0]
+        orderData: [4, 0]
     }
 ]
 });
