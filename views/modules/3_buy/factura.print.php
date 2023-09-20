@@ -12,7 +12,7 @@ function Header()
     // Salto de línea
     $this->Ln(10);
     $this->SetFont('times','B',16);
-    $this->Cell(0, 20, utf8_decode('Lubrimotos la 33'),0,0,'C');
+    $this->Cell(0, 20, utf8_decode('Lubrimotos la 30'),0,0,'C');
     $this->Ln(5);
     $this->SetFont('times','I',12);
     $this->Cell(0, 20, utf8_decode('NIT. 999.999.999-9'),0,0,'C');

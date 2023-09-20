@@ -413,3 +413,23 @@ span{
     flex-wrap: wrap;
     flex-direction: row-reverse;
 }
+/* Reportes */
+.reporteTarjeta{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+.card-reporte{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-columns: 30% 70%;
+}
+.icono {
+    color: #032838;
+}
+.descarga{
+    display: flex;
+    justify-content: center;
+}

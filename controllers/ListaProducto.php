@@ -23,7 +23,7 @@ session_start();
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if (!empty($_POST['id_factura']) && !empty($_POST['id_Producto']) && !empty($_POST['cantidad']) && !empty($_POST['valor_venta'])){
                     $listaProducto_dto = new ListaProducto_dto (($_POST['']), ($_POST['id_factura']), ($_POST['id_Producto']), ($_POST['cantidad']), ($_POST['valor_venta']));
-                    $this->listaProductoDao->crearListaProduto($listaProducto_dto);
+                    //$this->listaProductoDao->crearListaProduto($listaProducto_dto);
                     header("Location: ?c=ListaProducto"); 
                 }
                 else{
