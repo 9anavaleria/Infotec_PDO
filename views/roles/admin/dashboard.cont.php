@@ -211,11 +211,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold  text-uppercase mb-1">
-                                                Inventario</div>
+                                                Reportes</div>
                                            
                                         </div>
                                         <div class="col-auto">
-                                            <i class="bi bi-stack fa-2x text-gray-300"></i>
+                                            <i class="bi bi-clipboard2-data-fill fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </a>
