@@ -1,0 +1,109 @@
+@model IEnumerable<PruebaTecnica.Models.Tbl_Productos>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inicio</h2>
+
+
+
+@foreach (var item in Model)
+{
+    int j = 0;
+    j = j + 1;
+
+
+    @Html.DisplayFor(modelItem => j)
+
+}
+
+
+
+
+<input id="Button1" type="button" value="Ver Cantidad de productos" onclick="verCantidadProductos()" />
+
+
+<table class="table">
+    <tr id="tr-@model.Codigo">
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionId)
+        </th>
+        <th></th>
+    </tr>
+
+    <input id="Button2" type="button" value="cambiar el color de impares" />
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionId)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+este es el index
+--------------------------------------------------------------------
+using PruebaTecnica.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace PruebaTecnica.Controllers
+{
+    public class HomeController : Controller
+    {
+        private PruebaTecnicaEntities db = new PruebaTecnicaEntities();
+        public ActionResult Index()
+
+        {
+            // Por acá correr el programa
+            return View(db.Tbl_Productos.ToList());
+
+        }
+
+    }

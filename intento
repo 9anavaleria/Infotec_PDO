@@ -1,0 +1,177 @@
+@model List<intento100000.Models.ViewModel.ListPersonaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+
+<h5>Fecha Inicio</h5>
+<input id="fechaInicio" type="date" />
+<h5>Fecha Final</h5>
+<input id="fechaFinal" type="date" />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>codigo</td>
+            <td>descripcion</td>
+            <td>fecha_creacion</td>
+            <td>cantidad</td>
+            <td>estado</td>
+            <td>usuario</td>
+            <td>transaction_id</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oPersonas in Model)
+        {
+            <tr id="tr-@oPersonas.id">
+                <td> @oPersonas.id</td>
+                <td> @oPersonas.codigo</td>
+                <td> @oPersonas.descripcion</td>
+                <td> @oPersonas.fecha_creacion.Value.ToString("dd-MM-yyyy")</td>
+                <td> @oPersonas.cantidad</td>
+                <td> @oPersonas.estado</td>
+                <td> @oPersonas.usuario</td>
+                <td> @oPersonas.transaction_id</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>codigo</td>
+            <td>descripcion</td>
+            <td>cantidad</td>
+            <td>estado</td>
+            <td>usuario</td>
+            <td>transaction_id</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oPersonas in Model)
+        {
+            <tr id="ivan-@oPersonas.id">
+                <td> @oPersonas.id</td>
+                <td> @oPersonas.codigo</td>
+                <td> @oPersonas.descripcion</td>
+                <td> @oPersonas.cantidad</td>
+                <td> @oPersonas.estado</td>
+                <td> @oPersonas.usuario</td>
+                <td> @oPersonas.transaction_id</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<input type="button" value="Calcular" onclick="countreg()" />
+<input type="button" value="Id Color" onclick="idcolor()" />
+<input type="button" value="Filtrar Act" onclick="filtrar()" />
+<input type="button" value="Fecha" onclick="fecha()" />
+
+<script>
+    function countreg() {
+
+                alert('La cantidad de productos en la grilla es: ' + '@Model.Count()');
+    }
+
+    function idcolor(){
+        
+        for (var i = 1; i <= Model.Count(); i++) {
+            if (i % 2 != 0) {
+                console.log("tr-" +i)
+                document.getElementById("tr-" + i).style.color = "blue"
+            }
+                if (i % 2 == 0) {
+                console.log("ivan-" +i)
+                document.getElementById("ivan-" + i).style.backgroundColor = "red"
+            }
+        }
+    }
+
+    function filtrar() {
+    //Foreach recorre toda la tabla de la base de datos
+       @foreach (var oPersonas in Model)
+       {
+     // If en la columna estado es igual y diferente a Activo
+           if (oPersonas.estado != "A")
+           {
+    // Definir Variable "elemento" es igual documento al elemento por id "tr-" identificador de Id
+               <text>
+        var elemento= document.getElementById("tr-" +@oPersonas.id);
+        elemento.remove();
+               </text>
+
+           }
+
+       }
+    }
+//
+//function fecha() {
+ //               var inicio = document.getElementById("fechaInicio").value;
+//                var final = document.getElementById("fechaFinal").value;
+//          foreach(var oPersonas in Model) {
+//                   <text> 
+//           if (oPersonas.fecha_creacion < inicio && oPersonas.fecha_creacion > final )//
+//               {
+//              var elemento= document.getElemtById("tr-" +oPersonas.id);
+//              elemento.remove();
+//                   </text>
+//               }
+//            }
+//        }
+ 
+</script>
+
+-------------------------
+using intento100000.Models.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace intento100000.Controllers
+{
+    public class PersonaController : Controller
+    {
+        public DateTime Datetime { get; private set; }
+
+        // GET: Persona
+        public ActionResult Index()
+        {
+            List<ListPersonaViewModel> lst = new List<ListPersonaViewModel>();
+            using (Models.CrudMVCRazorEntities db = new Models.CrudMVCRazorEntities())
+            {
+                lst =
+                    (from d in db.productos
+                     select new ListPersonaViewModel
+                     {
+                         id = d.id,
+                         codigo = d.codigo,
+                         descripcion = d.descripcion,
+                         fecha_creacion = d.fecha_creacion,
+                         cantidad = d.cantidad,
+                         usuario = d.usuario,
+                         transaction_id = d.transaction_id,
+                         estado = d.estado,
+                     }).ToList();
+                            }
+            return View(lst);
+        }
+        public ActionResult list()
+        { return View(); }
+
+     
+
+    }
+}

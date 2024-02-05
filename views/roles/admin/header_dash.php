@@ -26,7 +26,7 @@
 					<?php print($_SESSION['session']) ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<a class="dropdown-item" ><?php print($_SESSION['nombre']) ?></a>
+					<a class="dropdown-item" ><?php print($_SESSION['nombre'])?></a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item text-danger" href="?c=Logout">Cerrar Sesión</a>
 				</div>
